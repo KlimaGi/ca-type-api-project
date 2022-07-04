@@ -1,9 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Arima:wght@300;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Courgette&display=swap");
+
+:root {
+  --color-dark: #13627f;
+  --color-semi-dark: #1f7a8c;
+  --color-light-blue: #bfdbf7;
+  --color-light-purple: rgb(225, 229, 242);
+  --color-white: rgb(243, 243, 243);
+}
+* {
+  font-family: "Arima", cursive;
+  /* font-family: "Courgette", cursive; */
+  letter-spacing: 1px;
+  margin: 0;
+  line-height: 2rem;
+}
+body {
+  color: var(--color-semi-dark);
+  background-color: var(--color-light-purple);
+}
+.page-title {
+  font-family: "Courgette", cursive;
+  padding: 1rem 2rem;
+}
 #main {
-  margin: 0 auto;
-  width: 80%;
-  border: 1px solid #f599a8;
+  background-color: var(--color-light-purple);
 }
 
 .post-item {
-  border: 1px solid #f599a8;
+  background-color: var(--color-light-purple);
+  color: var(--color-dark);
+
+  padding: 1rem 2rem;
+  box-shadow: -1px -4px 20px -2px rgba(243, 243, 243, 0.75) inset;
+}
+.title {
+  font-family: "Courgette", cursive;
+}
+.post-item a {
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-semi-dark);
+  color: var(--color-semi-dark);
+}
+
+.comments-wrapper {
+  /* background-color: var(--color-white); */
+  color: var(--color-semi-dark);
+}
+
+.comment-item {
+  background-color: var(--color-white);
+  padding: 1rem;
+  box-shadow: 0 -6px 10px 2px rgba(225, 229, 242, 0.75) inset;
+}
+
+.btn-show-comment {
+  padding: 0.6rem 1rem;
+  background-color: var(--color-semi-dark);
+  color: var(--color-light-purple);
+  border-style: none;
+  box-shadow: 0 -6px 10px 2px rgba(225, 229, 242, 0.75) inset;
 }
