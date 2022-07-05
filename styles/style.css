@@ -7,6 +7,8 @@
   --color-light-blue: #bfdbf7;
   --color-light-purple: rgb(225, 229, 242);
   --color-white: rgb(243, 243, 243);
+  --color-white-opacity: rgba(243, 243, 243, 0.75);
+  --color-purple-opacity: rgba(225, 229, 242, 0.75);
 }
 * {
   font-family: "Arima", cursive;
@@ -23,7 +25,7 @@ body {
   font-family: "Courgette", cursive;
   padding: 1rem 2rem;
 }
-#main {
+.main {
   background-color: var(--color-light-purple);
 }
 
@@ -32,7 +34,7 @@ body {
   color: var(--color-dark);
 
   padding: 1rem 2rem;
-  box-shadow: -1px -4px 20px -2px rgba(243, 243, 243, 0.75) inset;
+  box-shadow: -1px -4px 20px -2px var(--color-white-opacity) inset;
 }
 .title {
   font-family: "Courgette", cursive;
@@ -51,7 +53,7 @@ body {
 .comment-item {
   background-color: var(--color-white);
   padding: 1rem;
-  box-shadow: 0 -6px 10px 2px rgba(225, 229, 242, 0.75) inset;
+  box-shadow: 0 -6px 10px 2px var(--color-purple-opacity) inset;
 }
 
 .btn-show-comment {
@@ -59,5 +61,5 @@ body {
   background-color: var(--color-semi-dark);
   color: var(--color-light-purple);
   border-style: none;
-  box-shadow: 0 -6px 10px 2px rgba(225, 229, 242, 0.75) inset;
+  box-shadow: 0 -6px 10px 2px var(--color-purple-opacity) inset;
 }

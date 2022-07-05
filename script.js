@@ -36,7 +36,6 @@ fetch(`https://jsonplaceholder.typicode.com/posts?_start=0&_limit=15`)
       fetch(`https://jsonplaceholder.typicode.com/comments?postId=${post.id}`)
         .then((res) => res.json())
         .then((comments) => {
-          console.log(comments);
           comments.map((comment) => {
             let commentItem = document.createElement("div");
             commentItem.classList.add("comment-item");
