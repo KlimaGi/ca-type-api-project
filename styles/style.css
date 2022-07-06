@@ -38,7 +38,8 @@ body {
 .title {
   font-family: "Courgette", cursive;
 }
-.post-item a {
+.post-item a,
+.link {
   text-decoration: none;
   border-bottom: 1px solid var(--color-semi-dark);
   color: var(--color-semi-dark);

@@ -71,7 +71,5 @@ fetch(`https://jsonplaceholder.typicode.com/users/1/albums`)
       albumItem.innerHTML = `<a href="./album.html">${album.title}</a>`;
 
       userAlbumsWrapper.append(albumItem);
-
-      console.log(album);
     });
   });
