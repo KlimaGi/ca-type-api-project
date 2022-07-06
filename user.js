@@ -20,7 +20,7 @@ fetch(`https://jsonplaceholder.typicode.com/users/1`)
       .then((res) => res.json())
       .then((posts) => {
         let postContainer = document.querySelector("#post-container");
-        let postWrapperEl = document.querySelector("#post-wrapper");
+        let postWrapperEl = document.querySelector("#user-posts-wrapper");
 
         let postsTitle = document.createElement("h3");
         postsTitle.textContent = "User posts:";
@@ -38,7 +38,7 @@ fetch(`https://jsonplaceholder.typicode.com/users/1`)
 
             postItem.innerHTML = `<h4>${titleCapitalize}</h4>
                                   <p>${post.body}</p>
-                                  <a href="post.html">Read more</a>`;
+                                  <a href="./post.html">Read more</a>`;
 
             postWrapperEl.append(postItem);
           });
@@ -51,19 +51,27 @@ fetch(`https://jsonplaceholder.typicode.com/users/1`)
       });
   });
 
-let albumsWrapperEl = document.querySelector("#albums-wrapper");
+let userAlbumsEl = document.querySelector("#user-albums");
 
 fetch(`https://jsonplaceholder.typicode.com/users/1/albums`)
   .then((res) => res.json())
   .then((albums) => {
+    let albumTitleEl = document.createElement("h3");
+    albumTitleEl.textContent = "User albums: ";
+
+    userAlbumsEl.append(albumTitleEl);
+
+    let userAlbumsWrapper = document.createElement("div");
+    userAlbumsEl.append(userAlbumsWrapper);
+
     albums.map((album) => {
       let albumItem = document.createElement("div");
       albumItem.classList.add("album-item");
-      albumItem.innerHTML = `<h3>${album.title}</h3>
-      <span>Album created by: Name Lastname</span>
-      <img src="">`;
+
+      albumItem.innerHTML = `<a href="./album.html">${album.title}</a>`;
+
+      userAlbumsWrapper.append(albumItem);
 
       console.log(album);
-      albumsWrapperEl.prepend(albumItem);
     });
   });
