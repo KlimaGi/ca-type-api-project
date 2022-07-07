@@ -17,8 +17,7 @@ fetch(`https://jsonplaceholder.typicode.com/posts?_start=0&_limit=15`)
       postTitle.textContent = updatedTitle;
       postTitle.classList.add("title");
 
-      let author = document.createElement("a");
-      author.href = "#";
+      let postAuthor = document.createElement("h3");
 
       let postBody = document.createElement("p");
       let updatedBody = capitalize(post.body);
@@ -27,7 +26,8 @@ fetch(`https://jsonplaceholder.typicode.com/posts?_start=0&_limit=15`)
       fetch(`https://jsonplaceholder.typicode.com/users/${post.userId}`)
         .then((res) => res.json())
         .then((user) => {
-          author.textContent = user.name;
+          postAuthor.innerHTML = `Author: <a href="./user.html?user_id=${user.id}"> ${user.name}</a>`;
+          console.log("--", user);
         });
 
       let commentsWrapper = document.createElement("div");
@@ -45,7 +45,7 @@ fetch(`https://jsonplaceholder.typicode.com/posts?_start=0&_limit=15`)
             commentTitle.classList.add("title");
 
             let commentEmail = document.createElement("span");
-            commentEmail.textContent = comment.email;
+            commentEmail.textContent = `Comment by: ${comment.email}`;
 
             let commentBody = document.createElement("p");
             commentBody.textContent = comment.body;
@@ -70,7 +70,7 @@ fetch(`https://jsonplaceholder.typicode.com/posts?_start=0&_limit=15`)
 
       postItemEl.append(
         postTitle,
-        author,
+        postAuthor,
         postBody,
         commentsBtnEl,
         commentsWrapper
@@ -92,23 +92,23 @@ fetch(`https://jsonplaceholder.typicode.com/albums?_limit=15`)
             `https://jsonplaceholder.typicode.com/albums/${album.id}/photos?_limit=1`
           )
             .then((res) => res.json())
-            .then((photos) => console.log(photos[0]));
+            .then((photos) => {
+              let albumItem = document.createElement("div");
+              albumItem.classList.add("album-item");
 
-          let albumItem = document.createElement("div");
-          albumItem.classList.add("album-item");
+              let albumTitle = document.createElement("h3");
+              let capitalizeTitle = capitalize(album.title);
+              albumTitle.innerHTML = `<a class="link" href="./album.html?album_id=${album.id}&album_title=${album.title}&user_id=${album.userId}&user_name=${user.name}">${capitalizeTitle}</a>`;
 
-          let albumTitle = document.createElement("h3");
-          let capitalizeTitle = capitalize(album.title);
-          albumTitle.innerHTML = `<a class="link" href="./album.html">${capitalizeTitle}</a>`;
+              let albumAuthor = document.createElement("span");
+              albumAuthor.textContent = `Album created by: ${user.name}`;
 
-          let albumAuthor = document.createElement("span");
-          albumAuthor.textContent = `Album created by: ${user.name}`;
+              let imgEl = document.createElement("img");
+              imgEl.src = `${photos[0].thumbnailUrl}`;
 
-          let imgEl = document.createElement("img");
-          imgEl.src = "";
-
-          albumItem.append(albumTitle, albumAuthor, imgEl);
-          albumsWrapperEl.append(albumItem);
+              albumItem.append(albumTitle, albumAuthor, imgEl);
+              albumsWrapperEl.prepend(albumItem);
+            });
         });
     });
   });

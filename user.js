@@ -1,7 +1,15 @@
+let queryParams = document.location.search;
+let urlParams = new URLSearchParams(queryParams);
+let userId = urlParams.get("user_id");
+
+console.log(document.location);
+console.log(urlParams);
+console.log(userId);
+
 let capitalize = (sentence) =>
   sentence.charAt(0).toUpperCase() + sentence.slice(1);
 
-fetch(`https://jsonplaceholder.typicode.com/users/1`)
+fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
   .then((res) => res.json())
   .then((user) => {
     let userInfoEl = document.querySelector("#user-info");
@@ -16,7 +24,7 @@ fetch(`https://jsonplaceholder.typicode.com/users/1`)
    <li><strong>Company: </strong>${user.company.name}</li>
    </ul>`;
 
-    fetch(`https://jsonplaceholder.typicode.com/users/1/posts`)
+    fetch(`https://jsonplaceholder.typicode.com/users/${userId}/posts`)
       .then((res) => res.json())
       .then((posts) => {
         let postContainer = document.querySelector("#post-container");
@@ -38,7 +46,7 @@ fetch(`https://jsonplaceholder.typicode.com/users/1`)
 
             postItem.innerHTML = `<h4>${titleCapitalize}</h4>
                                   <p>${post.body}</p>
-                                  <a href="./post.html">Read more</a>`;
+                                  <a href="./post.html?post_id=${post.id}">Read more</a>`;
 
             postWrapperEl.append(postItem);
           });
@@ -53,7 +61,7 @@ fetch(`https://jsonplaceholder.typicode.com/users/1`)
 
 let userAlbumsEl = document.querySelector("#user-albums");
 
-fetch(`https://jsonplaceholder.typicode.com/users/1/albums`)
+fetch(`https://jsonplaceholder.typicode.com/users/${userId}/albums`)
   .then((res) => res.json())
   .then((albums) => {
     let albumTitleEl = document.createElement("h3");
