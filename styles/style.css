@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Courgette&display=swap");
 
 :root {
+  --color-dark-purple: hsl(271, 68%, 32%);
   --color-dark: hsl(196, 74%, 29%);
   --color-semi-dark: hsl(190, 64%, 34%);
   --color-light-blue: hsl(226, 40%, 85%);
@@ -73,15 +74,15 @@ body {
 .header a {
   padding: 0 2rem;
   text-decoration: none;
+  color: var(--color-semi-dark);
 }
 .header a:hover {
   font-size: 1.2rem;
-  color: var(--color-semi-dark);
+  color: var(--color-dark);
 }
 .header a:active {
   color: var(--color-semi-dark);
 }
 .current-page {
-  font-size: 1.2rem;
-  color: var(--color-semi-dark);
+  font-size: 1.3rem;
 }

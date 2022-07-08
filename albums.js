@@ -1,3 +1,6 @@
+let queryParams = document.location.search;
+let urlParams = new URLSearchParams(queryParams);
+
 let albumsWrapperEl = document.querySelector("#albums-wrapper");
 
 let capitalize = (sentence) =>
