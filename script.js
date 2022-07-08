@@ -27,7 +27,6 @@ fetch(`https://jsonplaceholder.typicode.com/posts?_start=0&_limit=15`)
         .then((res) => res.json())
         .then((user) => {
           postAuthor.innerHTML = `Author: <a href="./user.html?user_id=${user.id}"> ${user.name}</a>`;
-          console.log("--", user);
         });
 
       let commentsWrapper = document.createElement("div");
