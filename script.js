@@ -82,8 +82,6 @@ fetch(`https://jsonplaceholder.typicode.com/albums?_limit=15`)
   .then((res) => res.json())
   .then((albums) => {
     albums.map((album) => {
-      console.log(album.id);
-
       fetch(`https://jsonplaceholder.typicode.com/users/${album.userId}`)
         .then((res) => res.json())
         .then((user) => {

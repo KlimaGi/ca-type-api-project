@@ -20,3 +20,5 @@ PostsEl.href = "./posts.html";
 
 headerEl.append(HomeEl, UsersEl, AlbumsEl, PostsEl);
 bodyEl.prepend(headerEl);
+
+console.log(document.location.pathname);

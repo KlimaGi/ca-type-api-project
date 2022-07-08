@@ -4,7 +4,7 @@
 :root {
   --color-dark: hsl(196, 74%, 29%);
   --color-semi-dark: hsl(190, 64%, 34%);
-  --color-light-blue: #bfdbf7;
+  --color-light-blue: hsl(226, 40%, 85%);
   --color-light-purple: hsl(226, 40%, 92%);
   --color-white: rgb(243, 243, 243);
   --color-semi-grey: hsl(190, 24%, 80%);
@@ -63,4 +63,25 @@ body {
   color: var(--color-light-purple);
   border-style: none;
   box-shadow: 0 6px 10px 2px var(--color-purple-opacity);
+}
+
+/* header */
+.header {
+  padding: 1rem 2rem 0.5rem;
+  background-color: var(--color-light-blue);
+}
+.header a {
+  padding: 0 2rem;
+  text-decoration: none;
+}
+.header a:hover {
+  font-size: 1.2rem;
+  color: var(--color-semi-dark);
+}
+.header a:active {
+  color: var(--color-semi-dark);
+}
+.current-page {
+  font-size: 1.2rem;
+  color: var(--color-semi-dark);
 }
