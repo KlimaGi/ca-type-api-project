@@ -53,7 +53,7 @@ API nuoroda: https://jsonplaceholder.typicode.com
 *  8.1. Prie vartotojo turėtu būti jo vardas ir parašytų post'ų skaičius.
 *  8.2. Paspaudus ant vartotojo - nukreipiama į jo puslapį.
 
-  9. Tokiu pačiu principu, kaip ir vartotojų puslapį, sukurti puslapį albumams (albums.html).
+ * 9. Tokiu pačiu principu, kaip ir vartotojų puslapį, sukurti puslapį albumams (albums.html).
   9.1. Prie kiekvieno albumo turi būti:
     9.1.1. Parašytas jo pavadinimas.
     9.1.2. Parašytas vartotojo, sukūrusio šį albumą, vardas.
