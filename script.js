@@ -29,6 +29,26 @@ fetch(`https://jsonplaceholder.typicode.com/posts?_start=0&_limit=15`)
           postAuthor.innerHTML = `Author: <a href="./user.html?user_id=${user.id}"> ${user.name}</a>`;
         });
 
+      let commentsBtnEl = document.createElement("button");
+      commentsBtnEl.classList.add("btn-show-comment");
+
+      commentsBtnEl.addEventListener("click", buttonText);
+
+      function buttonText() {
+        let btnTextIs = commentsBtnEl.textContent;
+        if (btnTextIs === "Show comment" || btnTextIs === "Hide comment") {
+          let btnText =
+            btnTextIs === "Show comment" ? "Hide comment" : "Show comment";
+          commentsBtnEl.textContent = btnText;
+        } else {
+          let btnText =
+            btnTextIs === "Show comments" ? "Hide comments" : "Show comments";
+          commentsBtnEl.textContent = btnText;
+        }
+
+        commentsWrapper.toggleAttribute("hidden");
+      }
+
       let commentsWrapper = document.createElement("div");
       commentsWrapper.classList.add("comments-wrapper");
       commentsWrapper.setAttribute("hidden", "");
@@ -36,36 +56,31 @@ fetch(`https://jsonplaceholder.typicode.com/posts?_start=0&_limit=15`)
       fetch(`https://jsonplaceholder.typicode.com/comments?postId=${post.id}`)
         .then((res) => res.json())
         .then((comments) => {
-          comments.map((comment) => {
-            let commentItem = document.createElement("div");
-            commentItem.classList.add("comment-item");
-            let commentTitle = document.createElement("h5");
-            commentTitle.textContent = comment.name;
-            commentTitle.classList.add("title");
+          if (comments.length === 0) {
+            commentsBtnEl.setAttribute("hidden", "");
+          } else if (comments.length === 1) {
+            commentsBtnEl.textContent = "Show comment";
+          } else {
+            commentsBtnEl.textContent = "Show comments";
 
-            let commentEmail = document.createElement("span");
-            commentEmail.textContent = `Comment by: ${comment.email}`;
+            comments.map((comment) => {
+              let commentItem = document.createElement("div");
+              commentItem.classList.add("comment-item");
+              let commentTitle = document.createElement("h5");
+              commentTitle.textContent = comment.name;
+              commentTitle.classList.add("title");
 
-            let commentBody = document.createElement("p");
-            commentBody.textContent = comment.body;
+              let commentEmail = document.createElement("span");
+              commentEmail.textContent = `Comment by: ${comment.email}`;
 
-            commentItem.append(commentTitle, commentEmail, commentBody);
-            commentsWrapper.append(commentItem);
-          });
+              let commentBody = document.createElement("p");
+              commentBody.textContent = comment.body;
+
+              commentItem.append(commentTitle, commentEmail, commentBody);
+              commentsWrapper.append(commentItem);
+            });
+          }
         });
-
-      let commentsBtnEl = document.createElement("button");
-      commentsBtnEl.textContent = "Show comments";
-      commentsBtnEl.classList.add("btn-show-comment");
-
-      commentsBtnEl.addEventListener("click", () => {
-        let btnText =
-          commentsBtnEl.textContent === "Show comments"
-            ? "Hide Comments"
-            : "Show comments";
-        commentsBtnEl.textContent = btnText;
-        commentsWrapper.toggleAttribute("hidden");
-      });
 
       postItemEl.append(
         postTitle,

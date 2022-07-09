@@ -69,8 +69,10 @@ body {
 
 /* header */
 .header {
-  padding: 1rem 2rem 0.5rem;
+  padding: 1rem 0 0.5rem;
   background-color: var(--color-light-blue);
+  display: flex;
+  justify-content: start;
 }
 .header a {
   padding: 0 2rem;
