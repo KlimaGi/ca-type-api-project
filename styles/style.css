@@ -38,6 +38,7 @@ body {
 }
 .title {
   font-family: "Courgette", cursive;
+  margin: 1rem 2rem;
 }
 .post-item a,
 .link {
@@ -85,4 +86,28 @@ body {
 }
 .current-page {
   font-size: 1.3rem;
+}
+
+#user-info-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 2rem 2rem;
+}
+
+#map {
+  width: 40%;
+  /* border: 1px solid var(--color-semi-grey); */
+  object-fit: contain;
+}
+
+#user-info {
+  /* border: 1px solid var(--color-semi-grey); */
+  width: 50%;
+}
+#user-info ul {
+  padding-left: 0;
+}
+
+#user-info li {
+  list-style: none;
 }

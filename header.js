@@ -31,5 +31,5 @@ currentPage(PostsEl);
 headerEl.append(HomeEl, UsersEl, AlbumsEl, PostsEl);
 bodyEl.prepend(headerEl);
 
-console.log(document.location.pathname);
-console.log(AlbumsEl.href);
+// console.log(document.location.pathname);
+// console.log(AlbumsEl.href);

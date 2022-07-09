@@ -2,10 +2,6 @@ let queryParams = document.location.search;
 let urlParams = new URLSearchParams(queryParams);
 let userId = urlParams.get("user_id");
 
-console.log(document.location);
-console.log(urlParams);
-console.log(userId);
-
 let capitalize = (sentence) =>
   sentence.charAt(0).toUpperCase() + sentence.slice(1);
 
@@ -24,6 +20,8 @@ fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
    <li><strong>Company: </strong>${user.company.name}</li>
    </ul>`;
 
+    showMap(user.address.geo.lat, user.address.geo.lng);
+
     fetch(`https://jsonplaceholder.typicode.com/users/${userId}/posts`)
       .then((res) => res.json())
       .then((posts) => {
@@ -32,12 +30,11 @@ fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
 
         let postsTitle = document.createElement("h3");
         postsTitle.textContent = "User posts:";
-        postsTitle.classList.add("posts-title");
+        postsTitle.classList.add("title");
 
         postContainer.prepend(postsTitle);
 
         if (posts.length) {
-          console.log(posts);
           posts.map((post) => {
             let postItem = document.createElement("div");
             postItem.classList.add("post-item");
@@ -81,3 +78,18 @@ fetch(`https://jsonplaceholder.typicode.com/users/${userId}/albums`)
       userAlbumsWrapper.append(albumItem);
     });
   });
+
+function showMap(latitude, longitude) {
+  let map = L.map("map").setView([latitude, longitude], 3);
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 19,
+    attribution: "© OpenStreetMap",
+  }).addTo(map);
+
+  var circle = L.circle([latitude, longitude], {
+    color: "hsl(196, 74%, 29%)",
+    fillColor: "hsl(196, 74%, 29%)",
+    fillOpacity: 0.5,
+    radius: 500,
+  }).addTo(map);
+}
