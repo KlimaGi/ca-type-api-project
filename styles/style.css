@@ -38,7 +38,7 @@ body {
 }
 .title {
   font-family: "Courgette", cursive;
-  margin: 1rem 2rem;
+  margin: 1rem 0;
 }
 .post-item a,
 .link {
@@ -46,7 +46,9 @@ body {
   border-bottom: 1px solid var(--color-semi-dark);
   color: var(--color-semi-dark);
 }
-
+.post-item {
+  padding-bottom: 4.4rem;
+}
 .comments-wrapper {
   /* background-color: var(--color-white); */
   color: var(--color-semi-dark);
@@ -65,6 +67,7 @@ body {
   color: var(--color-light-purple);
   border-style: none;
   box-shadow: 0 6px 10px 2px var(--color-purple-opacity);
+  float: right;
 }
 
 /* header */
@@ -112,4 +115,12 @@ body {
 
 #user-info li {
   list-style: none;
+}
+
+/* post */
+.other-posts {
+  float: right;
+}
+.post-body {
+  padding: 1.3rem 0;
 }

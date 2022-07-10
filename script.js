@@ -17,9 +17,10 @@ fetch(`https://jsonplaceholder.typicode.com/posts?_start=0&_limit=15`)
       postTitle.textContent = updatedTitle;
       postTitle.classList.add("title");
 
-      let postAuthor = document.createElement("h3");
+      let postAuthor = document.createElement("h4");
 
       let postBody = document.createElement("p");
+      postBody.classList.add("post-body");
       let updatedBody = capitalize(post.body);
       postBody.textContent = updatedBody;
 

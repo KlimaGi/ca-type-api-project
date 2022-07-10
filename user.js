@@ -30,7 +30,7 @@ fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
 
         let postsTitle = document.createElement("h3");
         postsTitle.textContent = "User posts:";
-        postsTitle.classList.add("title");
+        postsTitle.classList.add("page-title");
 
         postContainer.prepend(postsTitle);
 

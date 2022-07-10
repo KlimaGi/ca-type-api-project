@@ -22,12 +22,14 @@ fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
     let postAuthor = document.createElement("span");
 
     let postBody = document.createElement("p");
+    postBody.classList.add("post-body");
     let updatedBody = capitalize(post.body);
+
     postBody.textContent = updatedBody;
 
     let otherPosts = document.createElement("a");
     otherPosts.textContent = "Other posts";
-    console.log(post);
+    otherPosts.classList.add("other-posts");
 
     otherPosts.setAttribute("href", `./posts.html?user_id=${post.userId}`);
 
@@ -35,12 +37,10 @@ fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
       .then((res) => res.json())
       .then((user) => {
         postAuthor.innerHTML = `Author: <a href="./user.html?user_id=${user.id}"> ${user.name}</a>`;
-        //console.log("--", user);
       });
 
     let commentsWrapper = document.createElement("div");
     commentsWrapper.classList.add("comments-wrapper");
-    commentsWrapper.setAttribute("hidden", "");
 
     fetch(`https://jsonplaceholder.typicode.com/comments?postId=${post.id}`)
       .then((res) => res.json())
@@ -63,25 +63,13 @@ fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
         });
       });
 
-    let commentsBtnEl = document.createElement("button");
-    commentsBtnEl.textContent = "Show comments";
-    commentsBtnEl.classList.add("btn-show-comment");
-
-    commentsBtnEl.addEventListener("click", () => {
-      let btnText =
-        commentsBtnEl.textContent === "Show comments"
-          ? "Hide Comments"
-          : "Show comments";
-      commentsBtnEl.textContent = btnText;
-      commentsWrapper.toggleAttribute("hidden");
-    });
-
     postItemEl.append(
       postTitle,
+
       postAuthor,
-      postBody,
       otherPosts,
-      commentsBtnEl,
+      postBody,
+
       commentsWrapper
     );
     postWrapperEl.append(postItemEl);
