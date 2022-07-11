@@ -3,6 +3,7 @@ let urlParams = new URLSearchParams(queryParams);
 let searchPhrase = urlParams.get("search-input");
 
 let searchFormPage = document.querySelector("#search-form-page");
+
 let containerEl = document.querySelector("#search-container");
 let usersListEl = document.createElement("ul");
 usersListEl.classList.add("ul-el");
