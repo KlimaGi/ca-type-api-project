@@ -1,6 +1,6 @@
 let bodyEl = document.querySelector("body");
 let headerEl = document.createElement("div");
-headerEl.classList.add("header");
+headerEl.classList.add("header", "container");
 
 function currentPage(element) {
   if (element.href.includes(document.location.pathname)) {
@@ -28,7 +28,20 @@ PostsEl.textContent = "Posts";
 PostsEl.href = "./posts.html";
 currentPage(PostsEl);
 
-headerEl.append(HomeEl, UsersEl, AlbumsEl, PostsEl);
+let searchForm = document.createElement("form");
+
+let searchInput = document.createElement("input");
+searchInput.setAttribute("type", "text");
+searchInput.setAttribute("name", "search-input");
+searchInput.setAttribute("placeholder", "Search");
+
+let searchSubmit = document.createElement("button");
+searchSubmit.setAttribute("type", "submit");
+searchSubmit.classList.add("search-icon");
+searchSubmit.innerHTML = `<i class="fa-solid fa-magnifying-glass"></i>`;
+
+searchForm.append(searchInput, searchSubmit);
+headerEl.append(HomeEl, UsersEl, AlbumsEl, PostsEl, searchForm);
 bodyEl.prepend(headerEl);
 
 // console.log(document.location.pathname);

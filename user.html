@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>User page</title>
 
+  <script src="https://kit.fontawesome.com/f2a29a7baf.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
    integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
    crossorigin=""/>
@@ -21,20 +22,23 @@
 </head>
 <body>
 
-  <h3 class="page-title">User info</h3>
+  <div class="container">
+    <h3 class="page-title">User info</h3>
 
-  <div id="user-info-wrapper">
-    <div id="user-info"></div>
-    <div id="map"></div>
+    <div id="user-info-wrapper">
+      <div id="user-info"></div>
+      <div id="map"></div>
+    </div>
+    
+
+    <div id="post-container">
+      <div id="user-posts-wrapper"></div>
+    </div>
+    
+
+    <div id="user-albums"></div>
   </div>
-  
 
-  <div id="post-container">
-    <div id="user-posts-wrapper"></div>
-  </div>
-  
-
-  <div id="user-albums"></div>
 
 </body>
 </html>
