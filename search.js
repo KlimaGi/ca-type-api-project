@@ -31,16 +31,13 @@ fetch(
 )
   .then((res) => res.json())
   .then((users) => {
-    console.log("user", users);
-
     if (users.length > 0) {
       users.map((user) => {
-        console.log(user);
         let userItem = document.createElement("li");
         userItem.classList.add("li-el");
         userItem.innerHTML = `<a href="./user.html?user_id=${user.id}">${user.name}</a>`;
 
-        let searchResultSubtitleEl = document.createElement("p");
+        let searchResultSubtitleEl = document.createElement("h4");
         searchResultSubtitleEl.textContent = "";
         usersListEl.append(searchResultSubtitleEl);
         searchResultSubtitleEl.textContent = "Search result in users: ";
@@ -52,14 +49,13 @@ fetch(
       )
         .then((res) => res.json())
         .then((usersByName) => {
-          console.log("usersByName", usersByName);
           usersByName.map((user) => {
             console.log(user);
             let userItem = document.createElement("li");
             userItem.classList.add("li-el");
             userItem.innerHTML = `<a href="./user.html?user_id=${user.id}">${user.name}</a>`;
 
-            let searchResultSubtitleEl = document.createElement("p");
+            let searchResultSubtitleEl = document.createElement("h4");
             searchResultSubtitleEl.textContent = "";
             usersListEl.append(searchResultSubtitleEl);
             searchResultSubtitleEl.textContent =
@@ -74,10 +70,8 @@ fetch(
 fetch(`https://jsonplaceholder.typicode.com/posts?title_like=${searchPhrase}`)
   .then((res) => res.json())
   .then((posts) => {
-    console.log("posts", posts);
-
     if (posts.length > 0) {
-      let searchResultSubtitleEl = document.createElement("p");
+      let searchResultSubtitleEl = document.createElement("h4");
       searchResultSubtitleEl.textContent = "";
       usersListEl.append(searchResultSubtitleEl);
       searchResultSubtitleEl.textContent = "Search result in post titles: ";
@@ -96,10 +90,8 @@ fetch(`https://jsonplaceholder.typicode.com/posts?title_like=${searchPhrase}`)
 fetch(`https://jsonplaceholder.typicode.com/posts?body_like=${searchPhrase}`)
   .then((res) => res.json())
   .then((postsBody) => {
-    console.log("postsBody", postsBody);
-
     if (postsBody.length > 0) {
-      let searchResultSubtitleEl = document.createElement("p");
+      let searchResultSubtitleEl = document.createElement("h4");
       searchResultSubtitleEl.textContent = "";
       usersListEl.append(searchResultSubtitleEl);
       searchResultSubtitleEl.textContent = "Search result in posts bodies: ";
@@ -109,6 +101,27 @@ fetch(`https://jsonplaceholder.typicode.com/posts?body_like=${searchPhrase}`)
         postItem.classList.add("li-el");
         postItem.innerHTML = `<a href="./post.html?post_id=${postbody.id}">${postbody.title}</a>`;
         usersListEl.append(postItem);
+      });
+    }
+  });
+
+fetch(`https://jsonplaceholder.typicode.com/albums?title_like=${searchPhrase}`)
+  .then((res) => res.json())
+  .then((albums) => {
+    if (albums.length > 0) {
+      let searchResultSubtitleEl = document.createElement("h4");
+      searchResultSubtitleEl.textContent = "";
+      usersListEl.append(searchResultSubtitleEl);
+      searchResultSubtitleEl.textContent = "Search result in albums titles: ";
+      albums.map((album) => {
+        fetch(`https://jsonplaceholder.typicode.com/users/${album.userId}`)
+          .then((res) => res.json())
+          .then((user) => {
+            let postItem = document.createElement("li");
+            postItem.classList.add("li-el");
+            postItem.innerHTML = `<a href="./album.html?album_id=${album.id}&album_title=${album.title}&user_id=${album.userId}&user_name=${user.name}">${album.title}</a>`;
+            usersListEl.append(postItem);
+          });
       });
     }
   });
