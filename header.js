@@ -29,15 +29,17 @@ PostsEl.href = "./posts.html";
 currentPage(PostsEl);
 
 let searchForm = document.createElement("form");
+searchForm.setAttribute("action", "./search.html");
 
 let searchInput = document.createElement("input");
 searchInput.setAttribute("type", "text");
 searchInput.setAttribute("name", "search-input");
 searchInput.setAttribute("placeholder", "Search");
+searchInput.classList.add("search-input");
 
 let searchSubmit = document.createElement("button");
 searchSubmit.setAttribute("type", "submit");
-searchSubmit.classList.add("search-icon");
+searchSubmit.classList.add("search-btn");
 searchSubmit.innerHTML = `<i class="fa-solid fa-magnifying-glass"></i>`;
 
 searchForm.append(searchInput, searchSubmit);

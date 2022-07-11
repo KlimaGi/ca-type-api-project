@@ -5,6 +5,7 @@ let userId = urlParams.get("user_id");
 let postsWrapperEl = document.querySelector("#posts-wrapper");
 let postsListTitle = document.createElement("h2");
 let postsList = document.createElement("ul");
+postsList.classList.add("ul-el");
 
 postsWrapperEl.append(postsListTitle, postsList);
 
@@ -20,6 +21,7 @@ if (userId) {
 
           posts.map((post) => {
             let postItem = document.createElement("li");
+            postItem.classList.add("li-el");
             postItem.innerHTML = `<a href="./post.html?post_id=${post.id}">${post.title}</a>`;
 
             postsList.prepend(postItem);
@@ -37,6 +39,7 @@ if (userId) {
           .then((res) => res.json())
           .then((user) => {
             let postItem = document.createElement("li");
+            postItem.classList.add("li-el");
             postItem.innerHTML = `<a href="./post.html?post_id=${post.id}">${post.title} (${user.name})</a>`;
 
             postsList.prepend(postItem);
