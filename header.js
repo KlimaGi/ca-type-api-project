@@ -42,9 +42,13 @@ searchSubmit.setAttribute("type", "submit");
 searchSubmit.classList.add("search-btn");
 searchSubmit.innerHTML = `<i class="fa-solid fa-magnifying-glass"></i>`;
 
+if (document.location.pathname.includes("/search.html")) {
+  searchForm.setAttribute("hidden", "");
+}
+
 searchForm.append(searchInput, searchSubmit);
 headerEl.append(HomeEl, UsersEl, AlbumsEl, PostsEl, searchForm);
 bodyEl.prepend(headerEl);
 
-// console.log(document.location.pathname);
+console.log(document.location.pathname);
 // console.log(AlbumsEl.href);

@@ -4,6 +4,7 @@ let userId = urlParams.get("user_id");
 
 let postsWrapperEl = document.querySelector("#posts-wrapper");
 let postsListTitle = document.createElement("h2");
+postsListTitle.classList.add("page-title");
 let postsList = document.createElement("ul");
 postsList.classList.add("ul-el");
 

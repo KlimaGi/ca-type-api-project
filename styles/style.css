@@ -116,12 +116,22 @@ body {
   color: var(--color-light-purple);
   font-size: 1rem;
   padding: 0.2rem 0.6rem;
+  box-shadow: -6px 1px 12px 3px var(--color-light-blue);
 }
 .search-input {
   background-color: var(--color-light-purple);
   border-style: none;
   padding: 0.2rem 1rem;
   font-size: 1rem;
+  margin-left: 2rem;
+}
+
+#search-container {
+  margin: 2rem 0;
+}
+#search-container .search-input {
+  border: 1px solid var(--color-light-blue);
+  box-sizing: border-box;
 }
 
 #user-info-wrapper {
