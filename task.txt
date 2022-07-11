@@ -22,8 +22,8 @@ API nuoroda: https://jsonplaceholder.typicode.com
 *  3.6. Internetinio puslapio adresas.
 *  3.7. Įmonės, kurioje dirba, pavadinimas.
 ----------------
-  4. Šiame puslapyje turės būti atvaizduojama:
-  4.1. Visi vartotojo parašyti įrašai (posts). Post'ų įrašuose nereikia atvaizduoti komentarų. Kiekvienas post'as turi turėti nuorodą.
+ * 4. Šiame puslapyje turės būti atvaizduojama:
+*  4.1. Visi vartotojo parašyti įrašai (posts). Post'ų įrašuose nereikia atvaizduoti komentarų. Kiekvienas post'as turi turėti nuorodą.
 
  * 4.2. Visi vartotojo sukurti foto albumai. Kiekvienas albumas turės:
  *   4.2.1. Albumo pavadinimą, kuris turi būti nuoroda. Kol kas nuoroda gali niekur nevesti.
@@ -47,7 +47,7 @@ API nuoroda: https://jsonplaceholder.typicode.com
 *  7.2. Autoriaus vardą. Paspaudus ant autoriaus vardo, turėtų atidaryti autoriaus puslapį.
 *  7.3. Įrašo turinį.
 *  7.4. Įrašo komentarus. Komentarai turi būti atvaizduojami tokiu pačiu principu kaip ir pagrindiniame puslapyje.
- ?* 7.5. Nuoroda „Kiti autoriaus įrašai", kurią paspaudus bus nukreipiama į naują puslapį posts.html. Jame bus atvaizduojami visi šio vartotojo įrašai. 
+ * 7.5. Nuoroda „Kiti autoriaus įrašai", kurią paspaudus bus nukreipiama į naują puslapį posts.html. Jame bus atvaizduojami visi šio vartotojo įrašai. 
 
 *  8. Sukurti vartotojų puslapį (users.html), kuriame būtų atvaizduotas vartotojų sąrašas.
 *  8.1. Prie vartotojo turėtu būti jo vardas ir parašytų post'ų skaičius.
@@ -66,18 +66,18 @@ API nuoroda: https://jsonplaceholder.typicode.com
  * 10.3. Albums / albumų puslapis.
  * 10.4. Posts / pranešimų puslapis.
 
-  11. Navigacijos elemente sukurti paieškos laukelį (formą ir text input).
+*  11. Navigacijos elemente sukurti paieškos laukelį (formą ir text input).
 
-12. Formos submit metu, nukreipti į naują puslapį (search.html).
+* 12. Formos submit metu, nukreipti į naują puslapį (search.html).
 
-13. Šiame puslapyje atvaizduoti paieškos rezultatą.
+* 13. Šiame puslapyje atvaizduoti paieškos rezultatą.
 13.1. Jeigu nėra tinkamų rezultatų, tai parašyti, jog rezultatų pagal užklausą nerasta.
 
 14. Filtruoti pagal:
-14.1. Tikslų vartotojo username.
+* 14.1. Tikslų vartotojo username.
 14.2. Jeigu neranda pagal username, tada pagal tikslų vartotojo pilną vardą.
 14.3. Jeigu neranda pagal username arba pagal tikslu vartotojo pilna vardą, tada pagal tikslų vartotojo el. paštą.
-14.4. Tikslų post'o pavadinimą.
+* 14.4. Tikslų post'o pavadinimą.
 14.5. Tikslų albumo pavadinimą.
 
 Papildoma:
