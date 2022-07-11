@@ -8,7 +8,6 @@ let containerEl = document.querySelector("#search-container");
 let usersListEl = document.createElement("ul");
 usersListEl.classList.add("ul-el");
 let searchCommentEl = document.createElement("p");
-
 containerEl.append(searchFormPage, usersListEl);
 
 if (searchPhrase) {
