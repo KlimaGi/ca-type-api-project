@@ -117,6 +117,7 @@ body {
   font-size: 1rem;
   padding: 0.2rem 0.6rem;
   box-shadow: -6px 1px 12px 3px var(--color-light-blue);
+  margin-left: -0.3rem;
 }
 .search-input {
   background-color: var(--color-light-purple);
