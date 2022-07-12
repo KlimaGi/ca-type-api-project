@@ -7,6 +7,13 @@
   <title>User page</title>
   <script src="https://kit.fontawesome.com/f2a29a7baf.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="./styles/style.css">
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+  />
+  <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js" defer></script>
+
   <script src="header.js" defer></script>
   <script src="album.js" defer></script>
 </head>
@@ -17,6 +24,28 @@
     <div id="album-wrapper"></div>
   </div>
  
-  
+<!-- Slider main container -->
+<div class="swiper">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+    <div class="swiper-slide">Slide 1</div>
+    <div class="swiper-slide">Slide 2</div>
+    <div class="swiper-slide">Slide 3</div>
+    ...
+  </div>
+  <!-- If we need pagination -->
+  <div class="swiper-pagination"></div>
+
+  If we need navigation buttons
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+
+  <!-- If we need scrollbar -->
+  <div class="swiper-scrollbar"></div>
+</div>
+
+
+  <br> <br><br> <br>
 </body>
 </html>
