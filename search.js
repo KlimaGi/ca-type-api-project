@@ -18,21 +18,24 @@ function init(searchPhrase) {
     usersListEl.append(searchCommentEl);
     millionsFetches(searchPhrase);
   } else {
-    searchCommentEl.textContent = "Enter search a word or phrase ";
+    searchCommentEl.textContent = "Enter a search word or phrase ";
     usersListEl.append(searchCommentEl);
   }
+  innerSearchForm();
 }
 
-searchFormPage.addEventListener("submit", (event) => {
-  event.preventDefault();
-  usersListEl.innerHTML = "";
-  let searchWord = event.target.elements["search-input"].value;
-  if (searchWord) millionsFetches(searchWord);
-  else {
-    searchCommentEl.textContent = "Enter search a word or phrase ";
-    usersListEl.append(searchCommentEl);
-  }
-});
+function innerSearchForm() {
+  searchFormPage.addEventListener("submit", (event) => {
+    event.preventDefault();
+    usersListEl.innerHTML = "";
+    let searchWord = event.target.elements["search-input"].value;
+    if (searchWord) millionsFetches(searchWord);
+    else {
+      searchCommentEl.textContent = "Enter search a word or phrase ";
+      usersListEl.append(searchCommentEl);
+    }
+  });
+}
 
 function millionsFetches(word) {
   searchCommentEl.textContent = "";
