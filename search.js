@@ -18,7 +18,6 @@ if (searchPhrase) {
   searchCommentEl.textContent = "Enter search a word or phrase ";
   usersListEl.append(searchCommentEl);
 }
-// usersListEl.append(searchResultSubtitleEl);
 
 searchFormPage.addEventListener("submit", (event) => {
   event.preventDefault();

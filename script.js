@@ -109,7 +109,7 @@ fetch(`https://jsonplaceholder.typicode.com/albums?_limit=15`)
               let albumItem = document.createElement("div");
               albumItem.classList.add("album-item");
 
-              let albumTitle = document.createElement("h3");
+              let albumTitle = document.createElement("h4");
               let capitalizeTitle = capitalize(album.title);
               albumTitle.innerHTML = `<a class="link" href="./album.html?album_id=${album.id}&album_title=${album.title}&user_id=${album.userId}&user_name=${user.name}">${capitalizeTitle}</a>`;
 
@@ -119,7 +119,7 @@ fetch(`https://jsonplaceholder.typicode.com/albums?_limit=15`)
               let imgEl = document.createElement("img");
               imgEl.src = `${photos[0].thumbnailUrl}`;
 
-              albumItem.append(albumTitle, albumAuthor, imgEl);
+              albumItem.append(imgEl, albumTitle, albumAuthor);
               albumsWrapperEl.prepend(albumItem);
             });
         });

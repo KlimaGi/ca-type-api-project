@@ -66,14 +66,15 @@ fetch(`https://jsonplaceholder.typicode.com/users/${userId}/albums`)
 
     userAlbumsEl.append(albumTitleEl);
 
-    let userAlbumsWrapper = document.createElement("div");
+    let userAlbumsWrapper = document.createElement("ul");
+    userAlbumsWrapper.classList.add("ul-el");
     userAlbumsEl.append(userAlbumsWrapper);
 
     albums.map((album) => {
-      let albumItem = document.createElement("div");
-      albumItem.classList.add("album-item");
-
-      albumItem.innerHTML = `<a href="./album.html">${album.title}</a>`;
+      let albumItem = document.createElement("li");
+      albumItem.classList.add("li-el");
+      let titleCapitalize = capitalize(album.title);
+      albumItem.innerHTML = `<a href="./album.html">${titleCapitalize}</a>`;
 
       userAlbumsWrapper.append(albumItem);
     });

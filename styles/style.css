@@ -126,6 +126,9 @@ body {
   font-size: 1rem;
   margin-left: 2rem;
 }
+.search-input:focus-visible {
+  outline: none;
+}
 
 #search-form-page {
   margin-bottom: 1.2rem;
@@ -169,4 +172,15 @@ body {
 }
 .post-body {
   padding: 1.3rem 0;
+}
+
+#albums-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+.album-item {
+  /* border: 1px solid pink; */
+  width: 13rem;
+  text-align: center;
+  padding: 1rem;
 }

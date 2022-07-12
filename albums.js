@@ -36,7 +36,7 @@ fetch(`https://jsonplaceholder.typicode.com/albums?_limit=15`)
               let imgEl = document.createElement("img");
               imgEl.src = `${photos[0].thumbnailUrl}`;
 
-              albumItem.append(albumTitle, albumAuthor, imgEl);
+              albumItem.append(imgEl, albumTitle, albumAuthor);
               albumsWrapperEl.prepend(albumItem);
             });
         });
