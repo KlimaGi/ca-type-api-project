@@ -10,13 +10,17 @@ usersListEl.classList.add("ul-el");
 let searchCommentEl = document.createElement("p");
 containerEl.append(searchFormPage, usersListEl);
 
-if (searchPhrase) {
-  searchCommentEl.textContent = "";
-  usersListEl.append(searchCommentEl);
-  millionsFetches(searchPhrase);
-} else {
-  searchCommentEl.textContent = "Enter search a word or phrase ";
-  usersListEl.append(searchCommentEl);
+init(searchPhrase);
+
+function init(searchPhrase) {
+  if (searchPhrase) {
+    searchCommentEl.textContent = "";
+    usersListEl.append(searchCommentEl);
+    millionsFetches(searchPhrase);
+  } else {
+    searchCommentEl.textContent = "Enter search a word or phrase ";
+    usersListEl.append(searchCommentEl);
+  }
 }
 
 searchFormPage.addEventListener("submit", (event) => {
@@ -33,6 +37,14 @@ searchFormPage.addEventListener("submit", (event) => {
 function millionsFetches(word) {
   searchCommentEl.textContent = "";
 
+  renderAllUsers(word);
+
+  renderAllPosts(word);
+
+  renderAllAlbums(word);
+}
+
+function renderAllUsers(word) {
   fetch(`https://jsonplaceholder.typicode.com/users?username_like=${word}`)
     .then((res) => res.json())
     .then((users) => {
@@ -69,7 +81,9 @@ function millionsFetches(word) {
           });
       }
     });
+}
 
+function renderAllPosts(word) {
   fetch(`https://jsonplaceholder.typicode.com/posts?title_like=${word}`)
     .then((res) => res.json())
     .then((posts) => {
@@ -111,7 +125,9 @@ function millionsFetches(word) {
         searchResultSubtitleEl.textContent = "";
       }
     });
+}
 
+function renderAllAlbums(word) {
   fetch(`https://jsonplaceholder.typicode.com/albums?title_like=${word}`)
     .then((res) => res.json())
     .then((albums) => {
@@ -137,3 +153,5 @@ function millionsFetches(word) {
       }
     });
 }
+
+function renderListElement(list) {}
