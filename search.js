@@ -13,68 +13,73 @@ containerEl.append(searchFormPage, usersListEl);
 if (searchPhrase) {
   searchCommentEl.textContent = "";
   usersListEl.append(searchCommentEl);
-  millionsFetches();
+  millionsFetches(searchPhrase);
 } else {
   searchCommentEl.textContent = "Enter search a word or phrase ";
   usersListEl.append(searchCommentEl);
 }
-usersListEl.append(searchResultSubtitleEl);
+// usersListEl.append(searchResultSubtitleEl);
 
 searchFormPage.addEventListener("submit", (event) => {
   event.preventDefault();
-  millionsFetches();
+  usersListEl.innerHTML = "";
+  let searchWord = event.target.elements["search-input"].value;
+  if (searchWord) millionsFetches(searchWord);
+  else {
+    searchCommentEl.textContent = "Enter search a word or phrase ";
+    usersListEl.append(searchCommentEl);
+  }
 });
 
-function millionsFetches() {
-  fetch(
-    `https://jsonplaceholder.typicode.com/users?username_like=${searchPhrase}`
-  )
+function millionsFetches(word) {
+  searchCommentEl.textContent = "";
+
+  fetch(`https://jsonplaceholder.typicode.com/users?username_like=${word}`)
     .then((res) => res.json())
     .then((users) => {
+      let searchResultSubtitleEl = document.createElement("h4");
+      searchResultSubtitleEl.textContent = "";
+      usersListEl.append(searchResultSubtitleEl);
+
       if (users.length > 0) {
         users.map((user) => {
           let userItem = document.createElement("li");
           userItem.classList.add("li-el");
           userItem.innerHTML = `<a href="./user.html?user_id=${user.id}">${user.name}</a>`;
-
-          let searchResultSubtitleEl = document.createElement("h4");
-          searchCommentEl.textContent = "";
-          usersListEl.append(searchResultSubtitleEl);
           searchResultSubtitleEl.textContent = "Search result in users: ";
           usersListEl.append(userItem);
         });
       } else {
-        fetch(
-          `https://jsonplaceholder.typicode.com/users?name_like=${searchPhrase}`
-        )
+        fetch(`https://jsonplaceholder.typicode.com/users?name_like=${word}`)
           .then((res) => res.json())
           .then((usersByName) => {
-            usersByName.map((user) => {
-              console.log(user);
-              let userItem = document.createElement("li");
-              userItem.classList.add("li-el");
-              userItem.innerHTML = `<a href="./user.html?user_id=${user.id}">${user.name}</a>`;
+            if (usersByName.length > 0) {
+              usersByName.map((user) => {
+                let userItem = document.createElement("li");
+                userItem.classList.add("li-el");
+                userItem.innerHTML = `<a href="./user.html?user_id=${user.id}">${user.name}</a>`;
 
-              let searchResultSubtitleEl = document.createElement("h4");
-              searchCommentEl.textContent = "";
-              usersListEl.append(searchResultSubtitleEl);
-              searchResultSubtitleEl.textContent =
-                "Search result in user names: ";
+                searchResultSubtitleEl.textContent =
+                  "Search result in user names: ";
 
-              usersListEl.append(userItem);
-            });
+                usersListEl.append(userItem);
+              });
+            } else {
+              searchResultSubtitleEl.textContent = "";
+            }
           });
       }
     });
 
-  fetch(`https://jsonplaceholder.typicode.com/posts?title_like=${searchPhrase}`)
+  fetch(`https://jsonplaceholder.typicode.com/posts?title_like=${word}`)
     .then((res) => res.json())
     .then((posts) => {
+      let searchResultSubtitleEl = document.createElement("h4");
+      searchResultSubtitleEl.textContent = "";
+      usersListEl.append(searchResultSubtitleEl);
+
       if (posts.length > 0) {
-        let searchResultSubtitleEl = document.createElement("h4");
-        searchCommentEl.textContent = "";
-        usersListEl.append(searchResultSubtitleEl);
-        searchResultSubtitleEl.textContent = "Search result in post titles: ";
+        searchResultSubtitleEl.textContent = "Search result in posts titles: ";
 
         posts.map((post) => {
           let postItem = document.createElement("li");
@@ -83,16 +88,18 @@ function millionsFetches() {
 
           usersListEl.append(postItem);
         });
+      } else {
+        searchResultSubtitleEl.textContent = "";
       }
     });
 
-  fetch(`https://jsonplaceholder.typicode.com/posts?body_like=${searchPhrase}`)
+  fetch(`https://jsonplaceholder.typicode.com/posts?body_like=${word}`)
     .then((res) => res.json())
     .then((postsBody) => {
+      let searchResultSubtitleEl = document.createElement("h4");
+      searchResultSubtitleEl.textContent = "";
+      usersListEl.append(searchResultSubtitleEl);
       if (postsBody.length > 0) {
-        let searchResultSubtitleEl = document.createElement("h4");
-        searchCommentEl.textContent = "";
-        usersListEl.append(searchResultSubtitleEl);
         searchResultSubtitleEl.textContent = "Search result in posts bodies: ";
 
         postsBody.map((postbody) => {
@@ -101,20 +108,22 @@ function millionsFetches() {
           postItem.innerHTML = `<a href="./post.html?post_id=${postbody.id}">${postbody.title}</a>`;
           usersListEl.append(postItem);
         });
+      } else {
+        searchResultSubtitleEl.textContent = "";
       }
     });
 
-  fetch(
-    `https://jsonplaceholder.typicode.com/albums?title_like=${searchPhrase}`
-  )
+  fetch(`https://jsonplaceholder.typicode.com/albums?title_like=${word}`)
     .then((res) => res.json())
     .then((albums) => {
+      let searchResultSubtitleEl = document.createElement("h4");
+      searchResultSubtitleEl.textContent = "";
+      usersListEl.append(searchResultSubtitleEl);
+
       if (albums.length > 0) {
-        let searchResultSubtitleEl = document.createElement("h4");
-        searchCommentEl.textContent = "";
-        usersListEl.append(searchResultSubtitleEl);
-        searchResultSubtitleEl.textContent = "Search result in albums titles: ";
         albums.map((album) => {
+          searchResultSubtitleEl.textContent =
+            "Search result in albums titles: ";
           fetch(`https://jsonplaceholder.typicode.com/users/${album.userId}`)
             .then((res) => res.json())
             .then((user) => {
@@ -124,6 +133,8 @@ function millionsFetches() {
               usersListEl.append(postItem);
             });
         });
+      } else {
+        searchResultSubtitleEl.textContent = "";
       }
     });
 }

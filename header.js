@@ -50,5 +50,5 @@ searchForm.append(searchInput, searchSubmit);
 headerEl.append(HomeEl, UsersEl, AlbumsEl, PostsEl, searchForm);
 bodyEl.prepend(headerEl);
 
-console.log(document.location.pathname);
+//console.log(document.location.pathname);
 // console.log(AlbumsEl.href);

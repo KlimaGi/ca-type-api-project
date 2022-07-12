@@ -127,6 +127,10 @@ body {
   margin-left: 2rem;
 }
 
+#search-form-page {
+  margin-bottom: 1.2rem;
+}
+
 #search-container {
   margin: 2rem 0;
 }
