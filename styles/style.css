@@ -184,3 +184,17 @@ body {
   text-align: center;
   padding: 1rem;
 }
+
+/* album swiper */
+.swiper {
+  width: 600px;
+  height: 300px;
+}
+.color {
+  color: var(--color-light-blue);
+  fill: var(--color-light-blue);
+}
+.swiper .swiper-button-prev,
+.swiper .swiper-button-next {
+  color: var(--color-light-blue);
+}
