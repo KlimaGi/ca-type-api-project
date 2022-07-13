@@ -5,45 +5,7 @@ let albumTitle = urlParams.get("album_title");
 let userId = urlParams.get("user_id");
 let userName = urlParams.get("user_name");
 
-const swiper = new Swiper(".swiper", {
-  // speed: 400,
-  // spaceBetween: 10,
-  // centeredSlides: true,
-  // createElements: true,
-  // init: true,
-  // rewind: true,
-  // roundLengths: true,
-  // slidesPerGroup: 1,
-  // effect: "coverflow",
-  // coverflowEffect: {
-  //   rotate: 30,
-  //   depth: 100,
-  //   modifier: 1,
-  //   scale: 1,
-  //   slideShadows: true,
-  //   stretch: 0,
-  //   transformEl: null,
-  // },
-
-  // Optional parameters
-  direction: "horizontal",
-  loop: true,
-
-  // Navigation arrows
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-
-  // And if we need scrollbar
-  scrollbar: {
-    el: ".swiper-scrollbar",
-  },
-});
-const swiperSlide = document.querySelector(".swiper").swiper;
-swiperSlide.slideNext();
-
-// renderPhotos();
+//renderPhotos();
 function renderPhotos() {
   fetch(`https://jsonplaceholder.typicode.com/albums/${albumId}/photos`)
     .then((res) => res.json())
@@ -80,34 +42,37 @@ function renderPhotos() {
     });
 }
 
-fetch(`https://jsonplaceholder.typicode.com/albums/${albumId}/photos`)
-  .then((res) => res.json())
-  .then((photos) => {
-    let swiperWrapperEl = document.querySelector(".swiper-wrapper");
+renderPhotosSwiper();
+function renderPhotosSwiper() {
+  fetch(`https://jsonplaceholder.typicode.com/albums/${albumId}/photos`)
+    .then((res) => res.json())
+    .then((photos) => {
+      let swiperWrapperEl = document.querySelector(".swiper-wrapper");
 
-    if (photos.length) {
-      let albumTitleEl = document.createElement("h3");
-      albumTitleEl.classList.add("album-title");
-      albumTitleEl.textContent = albumTitle;
+      if (photos.length) {
+        let albumTitleEl = document.createElement("h3");
+        albumTitleEl.classList.add("album-title");
+        albumTitleEl.textContent = albumTitle;
 
-      let albumAuthorEl = document.createElement("span");
-      albumAuthorEl.classList.add("album-author");
-      albumAuthorEl.innerHTML = `<strong>Album author: </strong><a href="./user.html?user_id=${userId}">${userName}</a>`;
+        let albumAuthorEl = document.createElement("span");
+        albumAuthorEl.classList.add("album-author");
+        albumAuthorEl.innerHTML = `<strong>Album author: </strong><a href="./user.html?user_id=${userId}">${userName}</a>`;
 
-      photos.map((photo) => {
-        let albumPhoto = document.createElement("div");
-        albumPhoto.classList.add("swiper-slide");
+        photos.map((photo) => {
+          let albumPhoto = document.createElement("div");
+          albumPhoto.classList.add("swiper-slide");
 
-        let imageEl = document.createElement("img");
-        imageEl.setAttribute("src", photo.thumbnailUrl);
-        imageEl.setAttribute("alt", photo.title);
-        albumPhoto.append(imageEl);
-        swiperWrapperEl.prepend(albumPhoto);
-      });
-    } else {
-      let textEl = document.createElement("p");
-      textEl.innerHTML = "No albums... <a href='./albums.html'>Try here</a>";
+          let imageEl = document.createElement("img");
+          imageEl.setAttribute("src", photo.thumbnailUrl);
+          imageEl.setAttribute("alt", photo.title);
+          albumPhoto.append(imageEl);
+          swiperWrapperEl.prepend(albumPhoto);
+        });
+      } else {
+        let textEl = document.createElement("p");
+        textEl.innerHTML = "No albums... <a href='./albums.html'>Try here</a>";
 
-      swiperWrapperEl.append(textEl);
-    }
-  });
+        swiperWrapperEl.append(textEl);
+      }
+    });
+}
