@@ -57,11 +57,12 @@ function renderAllUsers(word) {
 
       if (users.length > 0) {
         users.map((user) => {
-          let userItem = document.createElement("li");
-          userItem.classList.add("li-el");
-          userItem.innerHTML = `<a href="./user.html?user_id=${user.id}">${user.name}</a>`;
-          searchResultSubtitleEl.textContent = "Search result in users: ";
-          usersListEl.append(userItem);
+          let userData = {
+            content: user.name,
+            href: `./user.html?user_id=${user.id}`,
+            parentEl: usersListEl,
+          };
+          renderListElement(userData);
         });
       } else {
         fetch(`https://jsonplaceholder.typicode.com/users?name_like=${word}`)
@@ -69,14 +70,15 @@ function renderAllUsers(word) {
           .then((usersByName) => {
             if (usersByName.length > 0) {
               usersByName.map((user) => {
-                let userItem = document.createElement("li");
-                userItem.classList.add("li-el");
-                userItem.innerHTML = `<a href="./user.html?user_id=${user.id}">${user.name}</a>`;
-
                 searchResultSubtitleEl.textContent =
                   "Search result in user names: ";
 
-                usersListEl.append(userItem);
+                let userData = {
+                  content: user.name,
+                  href: `./user.html?user_id=${user.id}`,
+                  parentEl: usersListEl,
+                };
+                renderListElement(userData);
               });
             } else {
               searchResultSubtitleEl.textContent = "";
@@ -98,11 +100,12 @@ function renderAllPosts(word) {
         searchResultSubtitleEl.textContent = "Search result in posts titles: ";
 
         posts.map((post) => {
-          let postItem = document.createElement("li");
-          postItem.classList.add("li-el");
-          postItem.innerHTML = `<a href="./post.html?post_id=${post.id}">${post.title}</a>`;
-
-          usersListEl.append(postItem);
+          let postData = {
+            content: post.title,
+            href: `./post.html?post_id=${post.id}`,
+            parentEl: usersListEl,
+          };
+          renderListElement(postData);
         });
       } else {
         searchResultSubtitleEl.textContent = "";
@@ -119,10 +122,12 @@ function renderAllPosts(word) {
         searchResultSubtitleEl.textContent = "Search result in posts bodies: ";
 
         postsBody.map((postbody) => {
-          let postItem = document.createElement("li");
-          postItem.classList.add("li-el");
-          postItem.innerHTML = `<a href="./post.html?post_id=${postbody.id}">${postbody.title}</a>`;
-          usersListEl.append(postItem);
+          let postData = {
+            content: postbody.title,
+            href: `./post.html?post_id=${postbody.id}`,
+            parentEl: usersListEl,
+          };
+          renderListElement(postData);
         });
       } else {
         searchResultSubtitleEl.textContent = "";
@@ -145,10 +150,12 @@ function renderAllAlbums(word) {
           fetch(`https://jsonplaceholder.typicode.com/users/${album.userId}`)
             .then((res) => res.json())
             .then((user) => {
-              let postItem = document.createElement("li");
-              postItem.classList.add("li-el");
-              postItem.innerHTML = `<a href="./album.html?album_id=${album.id}&album_title=${album.title}&user_id=${album.userId}&user_name=${user.name}">${album.title}</a>`;
-              usersListEl.append(postItem);
+              let albumData = {
+                content: album.title,
+                href: `./album.html?album_id=${album.id}&album_title=${album.title}&user_id=${album.userId}&user_name=${user.name}`,
+                parentEl: usersListEl,
+              };
+              renderListElement(albumData);
             });
         });
       } else {
@@ -157,4 +164,9 @@ function renderAllAlbums(word) {
     });
 }
 
-function renderListElement(list) {}
+function renderListElement(data) {
+  let itemEl = document.createElement("li");
+  itemEl.classList.add("li-el");
+  itemEl.innerHTML = `<a href="${data.href}">${data.content}</a>`;
+  data.parentEl.append(itemEl);
+}
