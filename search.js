@@ -1,18 +1,23 @@
-let queryParams = document.location.search;
-let urlParams = new URLSearchParams(queryParams);
-let searchPhrase = urlParams.get("search-input");
-
 let searchFormPage = document.querySelector("#search-form-page");
-
 let containerEl = document.querySelector("#search-container");
 let usersListEl = document.createElement("ul");
 usersListEl.classList.add("ul-el");
 let searchCommentEl = document.createElement("p");
 containerEl.append(searchFormPage, usersListEl);
 
-init(searchPhrase);
+init();
 
-function init(searchPhrase) {
+function init() {
+  outerSearch();
+
+  innerSearchForm();
+}
+
+function outerSearch() {
+  let queryParams = document.location.search;
+  let urlParams = new URLSearchParams(queryParams);
+  let searchPhrase = urlParams.get("search-input");
+
   if (searchPhrase) {
     searchCommentEl.textContent = "";
     usersListEl.append(searchCommentEl);
@@ -21,10 +26,10 @@ function init(searchPhrase) {
     searchCommentEl.textContent = "Enter a search word or phrase ";
     usersListEl.append(searchCommentEl);
   }
-  innerSearchForm();
 }
 
 function innerSearchForm() {
+  let searchFormPage = document.querySelector("#search-form-page");
   searchFormPage.addEventListener("submit", (event) => {
     event.preventDefault();
     usersListEl.innerHTML = "";
