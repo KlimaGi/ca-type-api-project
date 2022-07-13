@@ -15,7 +15,6 @@ fetch(`https://jsonplaceholder.typicode.com/albums?_limit=15`)
       fetch(`https://jsonplaceholder.typicode.com/users/${album.userId}`)
         .then((res) => res.json())
         .then((user) => {
-          console.log("user", user);
           fetch(
             `https://jsonplaceholder.typicode.com/albums/${album.id}/photos?_limit=1`
           )
