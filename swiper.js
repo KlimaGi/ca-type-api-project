@@ -33,7 +33,7 @@ const mySwiper = new Swiper(".swiper-container", {
         mySwiper.params.slidesPerColumn = 1;
         mySwiper.params.slidesPerGroup = 2;
       }
-      console.log("mySwiper.params", mySwiper.params);
+      // console.log("mySwiper.params", mySwiper.params);
       mySwiper.init();
     },
   },

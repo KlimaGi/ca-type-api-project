@@ -5,8 +5,6 @@ usersListEl.classList.add("ul-el");
 let searchCommentEl = document.createElement("p");
 containerEl.append(searchFormPage, usersListEl);
 
-init();
-
 function init() {
   outerSearch();
 
@@ -169,9 +167,4 @@ function renderAllAlbums(word) {
     });
 }
 
-function renderListElement(data) {
-  let itemEl = document.createElement("li");
-  itemEl.classList.add("li-el");
-  itemEl.innerHTML = `<a href="${data.href}">${data.content}</a>`;
-  data.parentEl.append(itemEl);
-}
+init();

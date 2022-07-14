@@ -12,12 +12,12 @@ function usersPageInit() {
         let postCount = user.posts.length;
         let pluralS = postCount > 1 ? "s" : "";
 
-        let userEl = document.createElement("li");
-        userEl.classList.add("li-el");
-
-        userEl.innerHTML = `<a href="./user.html?user_id=${user.id}">${user.name} (${postCount} post${pluralS})</a>`;
-
-        usersList.prepend(userEl);
+        let userData = {
+          content: `${user.name} (${postCount} post${pluralS})`,
+          href: `./user.html?user_id=${user.id}`,
+          parentEl: usersList,
+        };
+        renderListElement(userData);
       });
     });
 }

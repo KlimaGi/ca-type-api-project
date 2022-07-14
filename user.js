@@ -2,9 +2,6 @@ let queryParams = document.location.search;
 let urlParams = new URLSearchParams(queryParams);
 let userId = urlParams.get("user_id");
 
-let capitalize = (sentence) =>
-  sentence.charAt(0).toUpperCase() + sentence.slice(1);
-
 fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
   .then((res) => res.json())
   .then((user) => {
@@ -40,9 +37,10 @@ fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
             postItem.classList.add("post-item");
 
             let titleCapitalize = capitalize(post.title);
+            let bodyCapitalize = capitalize(post.body);
 
             postItem.innerHTML = `<h4>${titleCapitalize}</h4>
-                                  <p>${post.body}</p>
+                                  <p>${bodyCapitalize}</p>
                                   <a href="./post.html?post_id=${post.id}">Read more</a>`;
 
             postWrapperEl.append(postItem);
@@ -58,7 +56,9 @@ fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
 
 let userAlbumsEl = document.querySelector("#user-albums");
 
-fetch(`https://jsonplaceholder.typicode.com/users/${userId}/albums`)
+fetch(
+  `https://jsonplaceholder.typicode.com/users/${userId}/albums?_expand=user`
+)
   .then((res) => res.json())
   .then((albums) => {
     let albumTitleEl = document.createElement("h3");
@@ -71,12 +71,14 @@ fetch(`https://jsonplaceholder.typicode.com/users/${userId}/albums`)
     userAlbumsEl.append(userAlbumsWrapper);
 
     albums.map((album) => {
-      let albumItem = document.createElement("li");
-      albumItem.classList.add("li-el");
       let titleCapitalize = capitalize(album.title);
-      albumItem.innerHTML = `<a href="./album.html">${titleCapitalize}</a>`;
 
-      userAlbumsWrapper.append(albumItem);
+      let userData = {
+        content: titleCapitalize,
+        href: `./album.html?album_id=${album.id}&album_title=${album.title}&user_id=${album.userId}&user_name=${album.user.name}`,
+        parentEl: userAlbumsWrapper,
+      };
+      renderListElement(userData);
     });
   });
 
