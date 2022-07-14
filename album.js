@@ -44,19 +44,23 @@ function renderPhotos() {
 
 renderPhotosSwiper();
 function renderPhotosSwiper() {
+  let containerEl = document.querySelector("#album-container");
+
   fetch(`https://jsonplaceholder.typicode.com/albums/${albumId}/photos`)
     .then((res) => res.json())
     .then((photos) => {
       let swiperWrapperEl = document.querySelector(".swiper-wrapper");
 
       if (photos.length) {
-        let albumTitleEl = document.createElement("h3");
-        albumTitleEl.classList.add("album-title");
+        let albumTitleEl = document.createElement("span");
+        albumTitleEl.classList.add("title");
         albumTitleEl.textContent = albumTitle;
 
         let albumAuthorEl = document.createElement("span");
         albumAuthorEl.classList.add("album-author");
         albumAuthorEl.innerHTML = `<strong>Album author: </strong><a href="./user.html?user_id=${userId}">${userName}</a>`;
+
+        containerEl.append(albumTitleEl, albumAuthorEl);
 
         photos.map((photo) => {
           let albumPhoto = document.createElement("div");
