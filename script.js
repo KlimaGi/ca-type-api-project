@@ -1,9 +1,6 @@
 let postWrapperEl = document.querySelector("#post-wrapper");
 let albumsWrapperEl = document.querySelector("#albums-wrapper");
 
-let capitalize = (sentence) =>
-  sentence.charAt(0).toUpperCase() + sentence.slice(1);
-
 fetch(`https://jsonplaceholder.typicode.com/posts?_start=0&_limit=15`)
   .then((res) => res.json())
   .then((data) => {
@@ -64,21 +61,8 @@ fetch(`https://jsonplaceholder.typicode.com/posts?_start=0&_limit=15`)
           } else {
             commentsBtnEl.textContent = "Show comments";
 
-            comments.map((comment) => {
-              let commentItem = document.createElement("div");
-              commentItem.classList.add("comment-item");
-              let commentTitle = document.createElement("h5");
-              commentTitle.textContent = comment.name;
-              commentTitle.classList.add("title");
-
-              let commentEmail = document.createElement("span");
-              commentEmail.textContent = `Comment by: ${comment.email}`;
-
-              let commentBody = document.createElement("p");
-              commentBody.textContent = comment.body;
-
-              commentItem.append(commentTitle, commentEmail, commentBody);
-              commentsWrapper.append(commentItem);
+            comments.map((singleComment) => {
+              renderSingleComment(singleComment, commentsWrapper);
             });
           }
         });

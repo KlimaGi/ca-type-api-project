@@ -52,13 +52,13 @@ function renderPhotosSwiper() {
       let swiperWrapperEl = document.querySelector(".swiper-wrapper");
 
       if (photos.length) {
-        let albumTitleEl = document.createElement("span");
+        let albumTitleEl = document.createElement("h3");
         albumTitleEl.classList.add("title");
-        albumTitleEl.textContent = albumTitle;
+        albumTitleEl.textContent = capitalize(albumTitle);
 
-        let albumAuthorEl = document.createElement("span");
+        let albumAuthorEl = document.createElement("p");
         albumAuthorEl.classList.add("album-author");
-        albumAuthorEl.innerHTML = `<strong>Album author: </strong><a href="./user.html?user_id=${userId}">${userName}</a>`;
+        albumAuthorEl.innerHTML = `<strong>Album author: </strong><a class="link" href="./user.html?user_id=${userId}">${userName}</a>`;
 
         containerEl.append(albumTitleEl, albumAuthorEl);
 

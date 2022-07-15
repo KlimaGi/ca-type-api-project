@@ -28,7 +28,8 @@ function renderPostsByUserId(id) {
       user.posts.map((post) => {
         let postItem = document.createElement("li");
         postItem.classList.add("li-el");
-        postItem.innerHTML = `<a href="./post.html?post_id=${post.id}">${post.title}</a>`;
+        let titleCapitalize = capitalize(post.title);
+        postItem.innerHTML = `<a href="./post.html?post_id=${post.id}">${titleCapitalize}</a>`;
 
         postsList.prepend(postItem);
       });
@@ -44,7 +45,8 @@ function renderAllPostsList() {
       posts.map((post) => {
         let postItem = document.createElement("li");
         postItem.classList.add("li-el");
-        postItem.innerHTML = `<a href="./post.html?post_id=${post.id}">${post.title} (${post.user.name})</a>`;
+        let titleCapitalize = capitalize(post.title);
+        postItem.innerHTML = `<a href="./post.html?post_id=${post.id}">${titleCapitalize} (${post.user.name})</a>`;
 
         postsList.prepend(postItem);
       });

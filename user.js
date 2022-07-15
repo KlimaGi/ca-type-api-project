@@ -13,7 +13,7 @@ fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
    <li><strong>Email: </strong>${user.email}</li>
     <li><strong>Address: </strong>${user.address.street}, ${user.address.suite}, ${user.address.city}, ${user.address.zipcode}</li>
     <li><strong>Phone: </strong>${user.phone}</li>
-   <li><strong>Website: </strong><a href="${user.website}"> ${user.website}</a></li>
+   <li><strong>Website: </strong><a class="link" href="${user.website}"> ${user.website}</a></li>
    <li><strong>Company: </strong>${user.company.name}</li>
    </ul>`;
 

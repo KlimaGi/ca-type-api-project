@@ -4,9 +4,6 @@ let postId = urlParams.get("post_id");
 
 let postWrapperEl = document.querySelector("#post-wrapper");
 
-let capitalize = (sentence) =>
-  sentence.charAt(0).toUpperCase() + sentence.slice(1);
-
 fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
   .then((res) => res.json())
   .then((post) => {
@@ -45,21 +42,8 @@ fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
     fetch(`https://jsonplaceholder.typicode.com/comments?postId=${post.id}`)
       .then((res) => res.json())
       .then((comments) => {
-        comments.map((comment) => {
-          let commentItem = document.createElement("div");
-          commentItem.classList.add("comment-item");
-          let commentTitle = document.createElement("h5");
-          commentTitle.textContent = comment.name;
-          commentTitle.classList.add("title");
-
-          let commentEmail = document.createElement("span");
-          commentEmail.textContent = `Comment by: ${comment.email}`;
-
-          let commentBody = document.createElement("p");
-          commentBody.textContent = comment.body;
-
-          commentItem.append(commentTitle, commentEmail, commentBody);
-          commentsWrapper.append(commentItem);
+        comments.map((singleComment) => {
+          renderSingleComment(singleComment, commentsWrapper);
         });
       });
 

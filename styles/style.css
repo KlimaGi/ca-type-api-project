@@ -58,13 +58,25 @@ body {
 }
 .title {
   font-family: "Courgette", cursive;
-  margin: 1rem 0;
+  margin: 1rem 0 0;
+  /* border: 1px solid pink; */
 }
 .post-item a,
 .link {
   text-decoration: none;
   border-bottom: 1px solid var(--color-semi-dark);
   color: var(--color-semi-dark);
+}
+
+.post-item a:hover,
+.link:hover {
+  color: var(--color-dark);
+  border-bottom: 1px solid var(--color-dark);
+}
+.post-item a:active,
+.link:active {
+  color: var(--color-dark);
+  border-bottom: 1px solid var(--color-dark);
 }
 
 .comments-wrapper {
@@ -178,6 +190,9 @@ body {
 #albums-wrapper {
   display: flex;
   flex-wrap: wrap;
+}
+#album-container {
+  padding: 0 3.8rem;
 }
 .album-item {
   /* border: 1px solid pink; */
