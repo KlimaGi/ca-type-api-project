@@ -18,24 +18,24 @@ function renderAlbumsByUserId(id) {
     `https://jsonplaceholder.typicode.com/users/${id}/albums?_embed=photos&_expand=user`
   )
     .then((res) => res.json())
-    .then((singleAlbum) => {
-      console.log("singleAlbum", singleAlbum);
+    .then((albums) => {
+      console.log("albums", albums);
 
-      let albumItem = document.createElement("div");
-      albumItem.classList.add("album-item");
+      // let albumItem = document.createElement("div");
+      // albumItem.classList.add("album-item");
 
-      albumsWrapperTitle.textContent = `Albums of ${singleAlbum.user.name}`;
+      // albumsWrapperTitle.textContent = `Albums of ${singleAlbum.user.name}`;
 
-      let albumTitle = document.createElement("h3");
-      let capitalizeTitle = capitalize(album.title);
+      // let albumTitle = document.createElement("h3");
+      // let capitalizeTitle = capitalize(album.title);
 
-      albumTitle.innerHTML = `<a class="link" href="./album.html?album_id=${album.id}&album_title=${album.title}&user_id=${album.userId}&user_name=${album.user.name}">${capitalizeTitle} (${album.photos.length})</a>`;
+      // albumTitle.innerHTML = `<a class="link" href="./album.html?album_id=${album.id}&album_title=${album.title}&user_id=${album.userId}&user_name=${album.user.name}">${capitalizeTitle} (${album.photos.length})</a>`;
 
-      let imgEl = document.createElement("img");
-      imgEl.src = `${album.photos[0].thumbnailUrl}`;
+      // let imgEl = document.createElement("img");
+      // imgEl.src = `${album.photos[0].thumbnailUrl}`;
 
-      albumItem.append(imgEl, albumTitle);
-      albumsWrapperEl.prepend(albumItem);
+      // albumItem.append(imgEl, albumTitle);
+      // albumsWrapperEl.prepend(albumItem);
     });
 }
 
@@ -53,13 +53,6 @@ function renderAllAlbums() {
           userFullName: singleAlbum.user.name,
         };
         renderSingleAlbum(albumData);
-
-        // renderSingleAlbum({
-        //   album: singleAlbum,
-        //   title: "All albums:",
-        //   userHref: `./user.html?user_id=${singleAlbum.user.id}`,
-        //   userFullName: singleAlbum.user.name,
-        // });
       });
     });
 }
