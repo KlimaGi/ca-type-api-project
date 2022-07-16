@@ -1,3 +1,5 @@
+import { renderListElement } from "./functions.js";
+
 let searchFormPage = document.querySelector("#search-form-page");
 let containerEl = document.querySelector("#search-container");
 let usersListEl = document.createElement("ul");

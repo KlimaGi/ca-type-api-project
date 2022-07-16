@@ -1,3 +1,5 @@
+import { capitalize } from "./functions.js";
+
 let postsWrapperEl = document.querySelector("#posts-wrapper");
 let postsListTitle = document.createElement("h2");
 postsListTitle.classList.add("page-title");

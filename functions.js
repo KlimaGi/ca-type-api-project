@@ -29,3 +29,5 @@ function renderSingleComment(comment, commentsWrapper) {
   commentItem.append(commentTitle, commentEmail, commentBody);
   commentsWrapper.append(commentItem);
 }
+
+export { renderListElement, capitalize, renderSingleComment };

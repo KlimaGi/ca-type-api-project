@@ -1,3 +1,5 @@
+import { capitalize } from "./functions.js";
+
 let albumsWrapperEl = document.querySelector("#albums-wrapper");
 let albumsWrapperTitle = document.querySelector("#albums-wrapper-title");
 

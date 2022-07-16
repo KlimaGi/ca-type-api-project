@@ -34,6 +34,7 @@
 //       }
 //     });
 // }
+import { capitalize } from "./functions.js";
 
 function albumInit() {
   let queryParams = document.location.search;

@@ -1,3 +1,5 @@
+import { capitalize, renderSingleComment } from "./functions.js";
+
 let postWrapperEl = document.querySelector("#post-wrapper");
 let albumsWrapperEl = document.querySelector("#albums-wrapper");
 
