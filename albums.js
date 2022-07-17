@@ -22,22 +22,15 @@ function renderAlbumsByUserId(id) {
     .then((res) => res.json())
     .then((albums) => {
       console.log("albums", albums);
-
-      // let albumItem = document.createElement("div");
-      // albumItem.classList.add("album-item");
-
-      // albumsWrapperTitle.textContent = `Albums of ${singleAlbum.user.name}`;
-
-      // let albumTitle = document.createElement("h3");
-      // let capitalizeTitle = capitalize(album.title);
-
-      // albumTitle.innerHTML = `<a class="link" href="./album.html?album_id=${album.id}&album_title=${album.title}&user_id=${album.userId}&user_name=${album.user.name}">${capitalizeTitle} (${album.photos.length})</a>`;
-
-      // let imgEl = document.createElement("img");
-      // imgEl.src = `${album.photos[0].thumbnailUrl}`;
-
-      // albumItem.append(imgEl, albumTitle);
-      // albumsWrapperEl.prepend(albumItem);
+      albums.map((singleAlbum) => {
+        let albumData = {
+          album: singleAlbum,
+          title: `Albums of ${singleAlbum.user.name}`,
+          userHref: "",
+          userFullName: "",
+        };
+        renderSingleAlbum(albumData);
+      });
     });
 }
 
@@ -71,7 +64,8 @@ function renderSingleAlbum(data) {
   albumTitle.innerHTML = `<a class="link" href="./album.html?album_id=${album.id}&album_title=${album.title}&user_id=${album.userId}&user_name=${album.user.name}">${capitalizeTitle} (${album.photos.length})</a>`;
 
   let albumAuthor = document.createElement("a");
-  albumAuthor.textContent = `Album created by: ${userFullName}`;
+  let text = userFullName ? `Album created by: ${userFullName}` : "";
+  albumAuthor.textContent = text;
   albumAuthor.href = userHref;
 
   let imgEl = document.createElement("img");
