@@ -3,8 +3,6 @@ import { headerView } from "./headerView.js";
 
 headerView();
 
-let albumsWrapperEl = document.querySelector("#albums-wrapper");
-
 function albumsInit() {
   let queryParams = document.location.search;
   let urlParams = new URLSearchParams(queryParams);

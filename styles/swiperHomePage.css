@@ -1,0 +1,26 @@
+/*  swiper */
+
+.swiper-container {
+  width: 100%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  overflow-x: hidden;
+}
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  height: 270px;
+  width: 100%;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+.swiper-slide:hover {
+  background: var(--color-light-blue);
+}
+
+.swiper-pagination-bullet-active {
+  opacity: var(--swiper-pagination-bullet-opacity, 1);
+  background: var(--swiper-pagination-color, var(--color-semi-dark)) !important;
+}

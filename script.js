@@ -4,7 +4,7 @@ import { headerView } from "./headerView.js";
 headerView();
 
 let postWrapperEl = document.querySelector("#post-wrapper");
-let albumsWrapperEl = document.querySelector("#albums-wrapper");
+let swiperWrapperEl = document.querySelector("#swiper-wrapper-home-page");
 
 fetch(`https://jsonplaceholder.typicode.com/posts?_start=0&_limit=15`)
   .then((res) => res.json())
@@ -96,9 +96,9 @@ fetch(`https://jsonplaceholder.typicode.com/albums?_limit=15`)
             .then((res) => res.json())
             .then((photos) => {
               let albumItem = document.createElement("div");
-              albumItem.classList.add("album-item");
+              albumItem.classList.add("swiper-slide");
 
-              let albumTitle = document.createElement("h4");
+              let albumTitle = document.createElement("h5");
               let capitalizeTitle = capitalize(album.title);
               albumTitle.innerHTML = `<a class="link" href="./album.html?album_id=${album.id}&album_title=${album.title}&user_id=${album.userId}&user_name=${user.name}">${capitalizeTitle}</a>`;
 
@@ -109,7 +109,7 @@ fetch(`https://jsonplaceholder.typicode.com/albums?_limit=15`)
               imgEl.src = `${photos[0].thumbnailUrl}`;
 
               albumItem.append(imgEl, albumTitle, albumAuthor);
-              albumsWrapperEl.prepend(albumItem);
+              swiperWrapperEl.prepend(albumItem);
             });
         });
     });

@@ -191,8 +191,10 @@ body {
 }
 
 #albums-wrapper {
-  display: flex;
-  flex-wrap: wrap;
+  position: relative;
+  height: 100%;
+  /* margin-top: 2rem; */
+  padding: 1rem 0 0.5rem;
 }
 #album-container {
   padding: 0 3.8rem;
@@ -202,31 +204,4 @@ body {
   width: 13rem;
   text-align: center;
   padding: 1rem;
-}
-
-/*  swiper */
-
-.swiper-container {
-  width: 100%;
-  height: auto;
-  margin-left: auto;
-  margin-right: auto;
-  overflow-x: hidden;
-}
-.swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  height: 270px;
-  width: 100%;
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
-}
-.swiper-slide:hover {
-  background: var(--color-light-blue);
-}
-
-.swiper-pagination-bullet-active {
-  opacity: var(--swiper-pagination-bullet-opacity, 1);
-  background: var(--swiper-pagination-color, var(--color-semi-dark)) !important;
 }

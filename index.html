@@ -8,12 +8,27 @@
   
   <script src="https://kit.fontawesome.com/f2a29a7baf.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="./styles/style.css">
-  
+  <link rel="stylesheet" href="./styles/swiperHomePage.css">
+  <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
 </head>
 <body>
 
   <div class="container">
-    <div id="albums-wrapper"></div>
+    <div id="albums-wrapper">
+
+     
+    <div class="swiper-container">
+      <div id="swiper-wrapper-home-page" class="swiper-wrapper grid-container">
+        <!-- <div class="swiper-slide">Slide 1</div> -->
+      </div>
+    <!-- Add Pagination -->
+      <div class="swiper-pagination"></div>
+    </div>
+
+    </div>
     <div id="post-wrapper"></div>
   </div>
 
@@ -22,6 +37,6 @@
   <script type="module" src="script.js"></script>
 
   <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-  <script src="swiper.js"></script>
+  <script src="./swiper/swiperHomePage.js"></script>
 </body>
 </html>
