@@ -1,5 +1,6 @@
 import { capitalize } from "./functions.js";
 import { headerView } from "./headerView.js";
+import { album } from "./albumView.js";
 
 headerView();
 
@@ -41,8 +42,6 @@ function albumInit() {
   )
     .then((res) => res.json())
     .then((album) => {
-      console.log("album", album);
-
       let { photos, title, user } = album;
 
       let dataObj = {
@@ -60,7 +59,7 @@ function renderAlbumsPage(data) {
   let { photos, albumTitle, userId, userName } = data;
 
   let containerEl = document.querySelector("#album-container");
-  let swiperWrapperEl = document.querySelector(".swiper-wrapper");
+  let swiperWrapperEl = document.querySelector("#swiper-wrapper-single-album");
 
   if (photos.length) {
     let albumTitleEl = document.createElement("h3");

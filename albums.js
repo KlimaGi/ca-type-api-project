@@ -4,7 +4,6 @@ import { headerView } from "./headerView.js";
 headerView();
 
 let albumsWrapperEl = document.querySelector("#albums-wrapper");
-let albumsWrapperTitle = document.querySelector("#albums-wrapper-title");
 
 function albumsInit() {
   let queryParams = document.location.search;
@@ -24,7 +23,6 @@ function renderAlbumsByUserId(id) {
   )
     .then((res) => res.json())
     .then((albums) => {
-      console.log("albums", albums);
       albums.map((singleAlbum) => {
         let albumData = {
           album: singleAlbum,
@@ -56,10 +54,14 @@ function renderAllAlbums() {
 }
 
 function renderSingleAlbum(data) {
+  let swiperWrapperAlbumsEl = document.querySelector(
+    "#swiper-wrapper-all-albums"
+  );
+  let albumsWrapperTitle = document.querySelector("#albums-wrapper-title");
   let { album, title, userHref, userFullName } = data;
 
   let albumItem = document.createElement("div");
-  albumItem.classList.add("album-item");
+  albumItem.classList.add("swiper-slide");
 
   let albumTitle = document.createElement("h3");
   let capitalizeTitle = capitalize(album.title);
@@ -76,7 +78,7 @@ function renderSingleAlbum(data) {
 
   albumsWrapperTitle.textContent = title;
   albumItem.append(imgEl, albumTitle, albumAuthor);
-  albumsWrapperEl.prepend(albumItem);
+  swiperWrapperAlbumsEl.prepend(albumItem);
 }
 
 albumsInit();

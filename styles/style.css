@@ -68,6 +68,7 @@ body {
   text-decoration: none;
   border-bottom: 1px solid var(--color-semi-dark);
   color: var(--color-dark);
+  font-size: 1rem;
 }
 
 .post-item a:hover,
@@ -215,11 +216,11 @@ body {
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  height: 100px;
+  height: 270px;
   width: 100%;
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
 }
 .swiper-slide:hover {
   background: var(--color-light-blue);
