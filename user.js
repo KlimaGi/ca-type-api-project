@@ -63,10 +63,19 @@ fetch(
 )
   .then((res) => res.json())
   .then((albums) => {
-    let albumTitleEl = document.createElement("h3");
+    console.log("albums", albums);
+    let albumTitleEl = document.createElement("span");
+    albumTitleEl.classList.add("title");
     albumTitleEl.textContent = "User albums: ";
 
-    userAlbumsEl.append(albumTitleEl);
+    let otherAlbums = document.createElement("a");
+    otherAlbums.textContent = "Other albums";
+    otherAlbums.classList.add("link");
+    otherAlbums.classList.add("other-posts");
+
+    otherAlbums.setAttribute("href", `./albums.html?user_id=${userId}`);
+
+    userAlbumsEl.append(albumTitleEl, otherAlbums);
 
     let userAlbumsWrapper = document.createElement("ul");
     userAlbumsWrapper.classList.add("ul-el");

@@ -51,11 +51,9 @@ fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
 
     postItemEl.append(
       postTitle,
-
       postAuthor,
       otherPosts,
       postBody,
-
       commentsWrapper
     );
     postWrapperEl.append(postItemEl);
