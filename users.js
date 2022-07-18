@@ -1,4 +1,7 @@
 import { renderListElement } from "./functions.js";
+import { headerView } from "./headerView.js";
+
+headerView();
 
 function usersPageInit() {
   fetch(`https://jsonplaceholder.typicode.com/users?_embed=posts`)

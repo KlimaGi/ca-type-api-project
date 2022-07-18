@@ -1,4 +1,7 @@
 import { capitalize } from "./functions.js";
+import { headerView } from "./headerView.js";
+
+headerView();
 
 let postsWrapperEl = document.querySelector("#posts-wrapper");
 let postsListTitle = document.createElement("h2");

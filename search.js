@@ -1,4 +1,7 @@
 import { renderListElement } from "./functions.js";
+import { headerView } from "./headerView.js";
+
+headerView();
 
 let searchFormPage = document.querySelector("#search-form-page");
 let containerEl = document.querySelector("#search-container");

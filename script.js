@@ -1,4 +1,7 @@
 import { capitalize, renderSingleComment } from "./functions.js";
+import { headerView } from "./headerView.js";
+
+headerView();
 
 let postWrapperEl = document.querySelector("#post-wrapper");
 let albumsWrapperEl = document.querySelector("#albums-wrapper");

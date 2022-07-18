@@ -1,4 +1,7 @@
 import { capitalize } from "./functions.js";
+import { headerView } from "./headerView.js";
+
+headerView();
 
 let albumsWrapperEl = document.querySelector("#albums-wrapper");
 let albumsWrapperTitle = document.querySelector("#albums-wrapper-title");
