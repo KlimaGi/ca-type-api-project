@@ -25,7 +25,7 @@ body {
 }
 .page-title {
   font-family: "Courgette", cursive;
-  padding: 1rem 2rem;
+  padding: 1rem 0;
 }
 .container {
   padding: 0 2rem;
@@ -58,7 +58,7 @@ body {
 }
 .title {
   font-family: "Courgette", cursive;
-  margin: 1rem 2rem 0;
+  margin: 0;
   /* border: 1px solid pink; */
   font-weight: bolder;
   font-size: 1.1rem;
@@ -194,7 +194,7 @@ body {
   position: relative;
   height: 100%;
   /* margin-top: 2rem; */
-  padding: 1rem 0 0.5rem;
+  padding: 1rem 0 2.2rem;
 }
 #album-container {
   padding: 0 3.8rem;

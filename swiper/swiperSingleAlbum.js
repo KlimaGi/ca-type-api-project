@@ -3,6 +3,7 @@ const singleAlbumSwiper = new Swiper(".swiper-container", {
   slidesPerColumn: 3,
   slidesPerGroup: 3,
   spaceBetween: 20,
+  toggle: true,
   grid: {
     fill: "rows",
     rows: 3,
