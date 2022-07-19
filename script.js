@@ -32,7 +32,7 @@ fetch(`https://jsonplaceholder.typicode.com/posts?_start=0&_limit=15`)
         });
 
       let commentsBtnEl = document.createElement("button");
-      commentsBtnEl.classList.add("btn-show-comment");
+      commentsBtnEl.classList.add("btn");
 
       commentsBtnEl.addEventListener("click", buttonText);
 

@@ -4,11 +4,22 @@ import { headerView } from "./headerView.js";
 headerView();
 
 let postsWrapperEl = document.querySelector("#posts-wrapper");
+let titleAndBtnWrapperEl = document.createElement("div");
+titleAndBtnWrapperEl.classList.add("title-btn-wrapper");
+
 let postsListTitle = document.createElement("h2");
 postsListTitle.classList.add("page-title");
+
+let createPostBtnEl = document.createElement("a");
+createPostBtnEl.textContent = "Create Post";
+createPostBtnEl.classList.add("link-btn");
+createPostBtnEl.setAttribute("href", "./createPost.html");
+
 let postsList = document.createElement("ul");
 postsList.classList.add("ul-el");
-postsWrapperEl.append(postsListTitle, postsList);
+
+titleAndBtnWrapperEl.append(postsListTitle, createPostBtnEl);
+postsWrapperEl.append(titleAndBtnWrapperEl, postsList);
 
 function postsInit() {
   let queryParams = document.location.search;

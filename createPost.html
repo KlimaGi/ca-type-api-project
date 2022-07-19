@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User page</title>
+  <script src="https://kit.fontawesome.com/f2a29a7baf.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./styles/style.css">
+  
+</head>
+<body>
+
+  <div class="container">
+     
+    <div id="search-container">
+      <form id="create-post-form">
+
+        <input type="text" name="post-title" id="title-input" placeholder="Enter post title" class="search-input title-input" required>
+
+        <textarea class="search-input" id="body-input" name="post-body" cols="30" rows="6" placeholder="Your post place" required></textarea>
+        
+        <select name="create-post-user" id="create-post-user"></select>
+
+        <button type="submit" class="search-btn create-btn">Submit</button>
+
+      </form>
+    </div>
+  
+    
+
+  </div>
+  
+
+  
+  <script type="module" src="./createPost.js"></script>
+</body>
+</html> 
