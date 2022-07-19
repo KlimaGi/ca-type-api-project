@@ -8,7 +8,6 @@
   --color-light-blue: hsl(226, 40%, 85%);
   --color-light-purple: hsl(226, 40%, 92%);
   --color-white: rgb(243, 243, 243);
-  --color-semi-grey: hsl(190, 24%, 80%);
   --color-purple-opacity: hsla(226, 40%, 92%, 0.75);
 }
 * {
@@ -35,7 +34,7 @@ body {
 }
 .li-el {
   padding: 1rem 2rem;
-  border-bottom: 1px solid var(--color-semi-grey);
+  border-bottom: 1px solid var(--color-light-blue);
   list-style: none;
 }
 .li-el a {
@@ -54,7 +53,7 @@ body {
   background-color: var(--color-light-purple);
   color: var(--color-dark);
   padding: 1rem 2rem 4.4rem;
-  border-bottom: 1px solid var(--color-semi-grey);
+  border-bottom: 1px solid var(--color-light-blue);
 }
 .title {
   font-family: "Courgette", cursive;
@@ -184,12 +183,10 @@ body {
 
 #map {
   width: 40%;
-  /* border: 1px solid var(--color-semi-grey); */
   object-fit: contain;
 }
 
 #user-info {
-  /* border: 1px solid var(--color-semi-grey); */
   width: 50%;
 }
 #user-info ul {
@@ -211,7 +208,7 @@ body {
 #albums-wrapper {
   position: relative;
   height: 100%;
-  /* margin-top: 2rem; */
+  margin-top: 1rem;
   padding: 1rem 0 2.2rem;
 }
 #album-container {
