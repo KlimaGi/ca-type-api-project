@@ -1,4 +1,4 @@
-import { renderListElement } from "./functions.js";
+import { renderListElement } from "../functions.js";
 
 function usersList(users) {
   let usersWrapper = document.querySelector("#users-wrapper");
