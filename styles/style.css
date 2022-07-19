@@ -226,7 +226,6 @@ body {
 
 #create-post-form {
   width: 80%;
-  border: 1px solid pink;
   margin: 0 2rem;
 }
 .title-input,
@@ -245,4 +244,8 @@ body {
 
 .create-btn {
   float: right;
+}
+
+#new-post {
+  margin: 1rem 2rem;
 }
