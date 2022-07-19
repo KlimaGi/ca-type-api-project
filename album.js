@@ -73,14 +73,14 @@ function renderAlbumsPage(data) {
     containerEl.append(albumTitleEl, albumAuthorEl);
 
     photos.map((photo) => {
-      let albumPhoto = document.createElement("div");
-      albumPhoto.classList.add("swiper-slide");
+      let albumPhotoItem = document.createElement("div");
+      albumPhotoItem.classList.add("swiper-slide");
 
       let imageEl = document.createElement("img");
       imageEl.setAttribute("src", photo.thumbnailUrl);
       imageEl.setAttribute("alt", photo.title);
-      albumPhoto.append(imageEl);
-      swiperWrapperEl.prepend(albumPhoto);
+      albumPhotoItem.append(imageEl);
+      swiperWrapperEl.prepend(albumPhotoItem);
     });
   } else {
     let textEl = document.createElement("p");

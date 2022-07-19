@@ -1,10 +1,9 @@
-import { capitalize, renderSingleComment } from "./functions.js";
+import { capitalize, renderSingleComment, renderAlbum } from "./functions.js";
 import { headerView } from "./headerView.js";
 
 headerView();
 
 let postWrapperEl = document.querySelector("#post-wrapper");
-let swiperWrapperEl = document.querySelector("#swiper-wrapper-home-page");
 
 fetch(`https://jsonplaceholder.typicode.com/posts?_start=0&_limit=15`)
   .then((res) => res.json())
@@ -83,34 +82,19 @@ fetch(`https://jsonplaceholder.typicode.com/posts?_start=0&_limit=15`)
     });
   });
 
-fetch(`https://jsonplaceholder.typicode.com/albums?_limit=15`)
+fetch(
+  `https://jsonplaceholder.typicode.com/albums?_expand=user&_embed=photos&_limit=15`
+)
   .then((res) => res.json())
   .then((albums) => {
     albums.map((album) => {
-      fetch(`https://jsonplaceholder.typicode.com/users/${album.userId}`)
-        .then((res) => res.json())
-        .then((user) => {
-          fetch(
-            `https://jsonplaceholder.typicode.com/albums/${album.id}/photos?_limit=1`
-          )
-            .then((res) => res.json())
-            .then((photos) => {
-              let albumItem = document.createElement("div");
-              albumItem.classList.add("swiper-slide");
+      let albumData = {
+        album,
+        title: "All albums:",
+        userHref: "",
+        userFullName: album.user.name,
+      };
 
-              let albumTitle = document.createElement("h5");
-              let capitalizeTitle = capitalize(album.title);
-              albumTitle.innerHTML = `<a class="link" href="./album.html?album_id=${album.id}&album_title=${album.title}&user_id=${album.userId}&user_name=${user.name}">${capitalizeTitle}</a>`;
-
-              let albumAuthor = document.createElement("span");
-              albumAuthor.textContent = `Album created by: ${user.name}`;
-
-              let imgEl = document.createElement("img");
-              imgEl.src = `${photos[0].thumbnailUrl}`;
-
-              albumItem.append(imgEl, albumTitle, albumAuthor);
-              swiperWrapperEl.prepend(albumItem);
-            });
-        });
+      renderAlbum(albumData);
     });
   });
