@@ -62,7 +62,7 @@ fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
 let userAlbumsEl = document.querySelector("#user-albums");
 
 fetch(
-  `https://jsonplaceholder.typicode.com/users/${userId}/albums?_expand=user`
+  `https://jsonplaceholder.typicode.com/users/${userId}/albums?_expand=user&_limit=3`
 )
   .then((res) => res.json())
   .then((albums) => {

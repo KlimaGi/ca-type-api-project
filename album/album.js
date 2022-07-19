@@ -1,10 +1,11 @@
-import { capitalize } from "./functions.js";
-import { headerView } from "./headerView.js";
+import { capitalize } from "../functions.js";
+import { headerView } from "../headerView.js";
 import { album } from "./albumView.js";
+import { getPhotosByAlbumId, getExpandedAlbumById } from "./albumController.js";
 
 headerView();
 
-function albumInit() {
+async function albumInit() {
   let queryParams = document.location.search;
   let urlParams = new URLSearchParams(queryParams);
   let albumId = urlParams.get("album_id");
@@ -23,20 +24,21 @@ function albumInit() {
   }
 
   if (albumTitle && userId && userName) {
-    fetch(`https://jsonplaceholder.typicode.com/albums/${albumId}/photos`)
-      .then((res) => res.json())
-      .then((albumPhotos) => {
-        let dataObj = {
-          photos: albumPhotos,
-          albumTitle,
-          userId,
-          userName,
-        };
-        renderAlbumsPage(dataObj);
-      });
+    let albumPhotos = await getPhotosByAlbumId(albumId);
+
+    let dataObj = {
+      photos: albumPhotos,
+      albumTitle,
+      userId,
+      userName,
+    };
+    renderAlbumsPage(dataObj);
+
     return;
   }
 
+  let albumData = await getExpandedAlbumById(albumId);
+  console.log("albumData", albumData);
   fetch(
     `https://jsonplaceholder.typicode.com/albums/${albumId}?_expand=user&_embed=photos`
   )
