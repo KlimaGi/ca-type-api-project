@@ -51,7 +51,7 @@ createPostForm.addEventListener("submit", (event) => {
 });
 
 function renderCreatedPost(data) {
-  let { title, body, userId } = data;
+  let { title, body, userId, id } = data;
 
   let author = userNameById(userId);
 
@@ -66,7 +66,8 @@ function renderCreatedPost(data) {
   let postAuthorEl = document.createElement("p");
   postAuthorEl.textContent = "Author is: " + author.userName;
 
-  newPostEl.append(postTitleEl, postBodyEl, postAuthorEl);
-}
+  let postIdEl = document.createElement("p");
+  postIdEl.textContent = `(${id})`;
 
-renderCreatedPost();
+  newPostEl.append(postTitleEl, postBodyEl, postIdEl, postAuthorEl);
+}
