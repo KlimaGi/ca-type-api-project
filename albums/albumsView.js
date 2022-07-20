@@ -1,15 +1,18 @@
 import { capitalize } from "../functions.js";
 
-function albumsView(albumsList) {
-  console.log("albumsList", albumsList);
+function albumsView(data) {
+  let { albumsData, wrapperSelector, allAlbums } = data;
 
-  albumsList.map((data) => {
-    let swiperWrapperAlbumsEl = document.querySelector(
-      "#swiper-wrapper-all-albums"
-    );
-    let albumsWrapperTitle = document.querySelector("#albums-wrapper-title");
-    let { album, title, userHref, userFullName } = data;
+  let swiperWrapperAlbumsEl = document.querySelector(wrapperSelector);
+  let albumsWrapperTitle = document.querySelector("#albums-wrapper-title");
 
+  if (allAlbums) {
+    albumsWrapperTitle.textContent = `All albums`;
+  } else {
+    albumsWrapperTitle.textContent = `Albums of ${albumsData[0].user.name}`;
+  }
+
+  albumsData.map((album) => {
     let albumItem = document.createElement("div");
     albumItem.classList.add("swiper-slide");
 
@@ -18,15 +21,14 @@ function albumsView(albumsList) {
 
     albumTitle.innerHTML = `<a class="link" href="./album.html?album_id=${album.id}&album_title=${album.title}&user_id=${album.userId}&user_name=${album.user.name}">${capitalizeTitle} (${album.photos.length})</a>`;
 
-    let albumAuthor = document.createElement("a");
-    let text = userFullName ? `Album created by: ${userFullName}` : "";
-    albumAuthor.textContent = text;
-    albumAuthor.href = userHref;
+    let albumAuthor = document.createElement("span");
+    albumAuthor.classList.add("span-text");
+    let authorText = allAlbums ? `Album created by: ${album.user.name}` : "";
+    albumAuthor.textContent = authorText;
 
     let imgEl = document.createElement("img");
     imgEl.src = `${album.photos[0].thumbnailUrl}`;
 
-    albumsWrapperTitle.textContent = title;
     albumItem.append(imgEl, albumTitle, albumAuthor);
     swiperWrapperAlbumsEl.prepend(albumItem);
   });

@@ -99,7 +99,7 @@ body {
   margin: 0.5rem 0 0.5rem 2rem;
 }
 .link-btn {
-  padding: 0.6rem 1rem;
+  padding: 0.4rem 1rem;
   background-color: var(--color-semi-dark);
   color: var(--color-light-purple);
   box-shadow: 0 6px 10px 2px var(--color-purple-opacity);
@@ -229,7 +229,7 @@ select.form-input {
   width: 80%;
   margin: 0 2rem;
 }
-.title-input,
+.wide-input,
 #body-input,
 #create-post-user {
   width: 100%;
@@ -254,4 +254,7 @@ select.form-input {
 .new-post-id {
   font-size: 0.7rem;
   font-weight: lighter;
+}
+.span-text {
+  font-size: 0.9rem;
 }

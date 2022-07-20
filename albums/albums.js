@@ -12,32 +12,21 @@ async function albumsInit() {
   let userId = urlParams.get("user_id");
 
   if (userId) {
-    let albumsData = await getAllAlbumsByUserId(userId);
-    console.log("albumsData", albumsData);
-    albumsView(albumsData);
-
-    // albums.map((singleAlbum) => {
-    //   let albumData = {
-    //     album: singleAlbum,
-    //     title: `Albums of ${singleAlbum.user.name}`,
-    //     userHref: "",
-    //     userFullName: "",
-    //   };
-    //   albumsView(albumData);
-    // });
+    //let albumsData = await getAllAlbumsByUserId(userId);
+    albumsView({
+      albumsData: await getAllAlbumsByUserId(userId),
+      wrapperSelector: "#swiper-wrapper-all-albums",
+      allAlbums: false,
+    });
     return;
   }
 
-  let albums = await getAllExpandedAlbums(15);
+  //let albumsData = await getAllExpandedAlbums(15);
 
-  albums.map((singleAlbum) => {
-    let albumData = {
-      album: singleAlbum,
-      title: "All albums:",
-      userHref: `./user.html?user_id=${singleAlbum.user.id}`,
-      userFullName: singleAlbum.user.name,
-    };
-    albumsView(albumData);
+  albumsView({
+    albumsData: await getAllExpandedAlbums(15),
+    wrapperSelector: "#swiper-wrapper-all-albums",
+    allAlbums: true,
   });
 }
 
