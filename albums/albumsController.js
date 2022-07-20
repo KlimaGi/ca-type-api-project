@@ -6,4 +6,12 @@ async function getAllAlbumsByUserId(id) {
   return albums;
 }
 
-export { getAllAlbumsByUserId };
+async function getAllExpandedAlbums(limit) {
+  let res = await fetch(
+    `https://jsonplaceholder.typicode.com/albums?_expand=user&_embed=photos&_limit=${limit}`
+  );
+  let allAlbums = await res.json();
+  return allAlbums;
+}
+
+export { getAllAlbumsByUserId, getAllExpandedAlbums };

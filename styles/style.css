@@ -152,25 +152,29 @@ body {
 .search-btn:hover {
   background-color: var(--color-dark);
 }
-.search-input {
+.form-input {
   background-color: var(--color-light-purple);
   border-style: none;
   padding: 0.2rem 1rem;
   font-size: 1rem;
   margin-left: 2rem;
+  color: var(--color-dark);
 }
-.search-input:focus-visible {
+.form-input:focus-visible {
   outline: none;
 }
 
+select.form-input {
+  color: var(--color-dark);
+}
 #search-form-page {
   margin-bottom: 1.2rem;
 }
 
-#search-container {
+.form-container {
   margin: 2rem 0;
 }
-#search-container .search-input {
+.form-container .form-input {
   border: 1px solid var(--color-light-blue);
   box-sizing: border-box;
 }
@@ -245,4 +249,9 @@ body {
 
 #new-post {
   margin: 1rem 2rem;
+}
+
+.new-post-id {
+  font-size: 0.7rem;
+  font-weight: lighter;
 }

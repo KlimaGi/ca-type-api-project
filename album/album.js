@@ -2,9 +2,8 @@ import { headerView } from "../headerView.js";
 import { albumView } from "./albumView.js";
 import { getPhotosByAlbumId, getExpandedAlbumById } from "./albumController.js";
 
-headerView();
-
 async function albumInit() {
+  headerView();
   let queryParams = document.location.search;
   let urlParams = new URLSearchParams(queryParams);
   let albumId = urlParams.get("album_id");
@@ -24,6 +23,13 @@ async function albumInit() {
 
   if (albumTitle && userId && userName) {
     let albumPhotos = await getPhotosByAlbumId(albumId);
+
+    // let dataObj = {
+    //   photos: await getPhotosByAlbumId(albumId),
+    //   albumTitle,
+    //   userId,
+    //   userName,
+    // };
 
     let dataObj = {
       photos: albumPhotos,

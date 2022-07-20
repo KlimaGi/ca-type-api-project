@@ -36,7 +36,7 @@ function headerView() {
   searchInput.setAttribute("type", "text");
   searchInput.setAttribute("name", "search-input");
   searchInput.setAttribute("placeholder", "Search");
-  searchInput.classList.add("search-input");
+  searchInput.classList.add("form-input");
 
   let searchSubmit = document.createElement("button");
   searchSubmit.setAttribute("type", "submit");

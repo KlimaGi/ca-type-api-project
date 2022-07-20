@@ -12,6 +12,13 @@ function renderListElement(data) {
 let capitalize = (sentence) =>
   sentence.charAt(0).toUpperCase() + sentence.slice(1);
 
+function renderOptionEl(data) {
+  let optionEl = document.createElement("option");
+  optionEl.textContent = `-- ${data.content}`;
+  optionEl.setAttribute("value", `${data.value}`);
+  data.parentEl.append(optionEl);
+}
+
 function renderSingleComment(comment, commentsWrapper) {
   let commentItem = document.createElement("div");
   commentItem.classList.add("comment-item");
@@ -52,4 +59,10 @@ function renderAlbum(data) {
   swiperWrapperEl.prepend(albumItem);
 }
 
-export { renderListElement, capitalize, renderSingleComment, renderAlbum };
+export {
+  renderListElement,
+  capitalize,
+  renderSingleComment,
+  renderAlbum,
+  renderOptionEl,
+};
