@@ -100,7 +100,7 @@ Papildoma:
 
 _         _
  \_('-')_/  
-
+ 
 13.1. Prie kiekvieno post'o pridėti nuorodą.
 13.1.1. Nuorodos tekstas: „Redaguoti" arba bet koks kitas jūsų pasirinktas.
 13.1.2. Nuoroda turi nuvestį į edit-post.html puslapį.

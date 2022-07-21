@@ -9,24 +9,26 @@ function createUserInit() {
   createUserForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    let name = event.target.elements["full-name"].value;
-    let username = event.target.elements.username.value;
-    let email = event.target.elements.email.value;
+    let { elements } = event.target;
 
-    let street = event.target.elements.street.value;
-    let suite = event.target.elements.suite.value;
-    let city = event.target.elements.city.value;
+    let name = elements["full-name"].value;
+    let username = elements.username.value;
+    let email = elements.email.value;
 
-    let zipcode = event.target.elements.zipcode.value;
-    let lat = event.target.elements.lat.value;
-    let lng = event.target.elements.lng.value;
+    let street = elements.street.value;
+    let suite = elements.suite.value;
+    let city = elements.city.value;
 
-    let phone = event.target.elements.phone.value;
-    let website = event.target.elements.website.value;
-    let companyName = event.target.elements.company.value;
+    let zipcode = elements.zipcode.value;
+    let lat = elements.lat.value;
+    let lng = elements.lng.value;
 
-    let catchPhrase = event.target.elements["catch-phrase"].value;
-    let bs = event.target.elements.bs.value;
+    let phone = elements.phone.value;
+    let website = elements.website.value;
+    let companyName = elements.company.value;
+
+    let catchPhrase = elements["catch-phrase"].value;
+    let bs = elements.bs.value;
 
     let newUserData = {
       id: 11,
@@ -53,7 +55,6 @@ function createUserInit() {
     };
 
     let createUser = await createNewUser(newUserData);
-    console.log("createUser", createUser);
 
     renderCreatedPost(createUser);
   });
