@@ -13,7 +13,7 @@ postsListTitle.classList.add("page-title");
 let createPostBtnEl = document.createElement("a");
 createPostBtnEl.textContent = "Create Post";
 createPostBtnEl.classList.add("link-btn");
-createPostBtnEl.setAttribute("href", "./createPost.html");
+createPostBtnEl.setAttribute("href", "./create-post.html");
 
 let postsList = document.createElement("ul");
 postsList.classList.add("ul-el");

@@ -235,6 +235,10 @@ select.form-input {
   width: 100%;
   margin: 0.5rem 0;
 }
+.not-wide-input {
+  width: 20rem;
+  margin: 0.5rem 0;
+}
 #create-post-user {
   border: 1px solid var(--color-light-blue);
   background-color: var(--color-light-purple);

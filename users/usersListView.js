@@ -13,7 +13,7 @@ function usersList(users) {
   let createPostBtnEl = document.createElement("a");
   createPostBtnEl.textContent = "Create User";
   createPostBtnEl.classList.add("link-btn");
-  createPostBtnEl.setAttribute("href", "./createUser.html");
+  createPostBtnEl.setAttribute("href", "./create-user.html");
 
   let usersList = document.createElement("ul");
   usersList.classList.add("ul-el");
