@@ -19,24 +19,6 @@ function renderOptionEl(data) {
   data.parentEl.append(optionEl);
 }
 
-function renderSingleComment(comment, commentsWrapper) {
-  let commentItem = document.createElement("div");
-  commentItem.classList.add("comment-item");
-
-  let commentTitle = document.createElement("h5");
-  commentTitle.textContent = capitalize(comment.name);
-  commentTitle.classList.add("title");
-
-  let commentEmail = document.createElement("span");
-  commentEmail.textContent = `Comment by: ${comment.email}`;
-
-  let commentBody = document.createElement("p");
-  commentBody.textContent = comment.body;
-
-  commentItem.append(commentTitle, commentEmail, commentBody);
-  commentsWrapper.append(commentItem);
-}
-
 function renderAlbum(data) {
   let { album } = data;
   let swiperWrapperEl = document.querySelector("#swiper-wrapper-home-page");
@@ -59,10 +41,4 @@ function renderAlbum(data) {
   swiperWrapperEl.prepend(albumItem);
 }
 
-export {
-  renderListElement,
-  capitalize,
-  renderSingleComment,
-  renderAlbum,
-  renderOptionEl,
-};
+export { renderListElement, capitalize, renderAlbum, renderOptionEl };

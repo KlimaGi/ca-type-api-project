@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User page</title>
+  <script src="https://kit.fontawesome.com/f2a29a7baf.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./styles/style.css">
+  
+</head>
+<body>
+
+  <div class="container">
+     
+    <div class="form-container">
+      <form id="create-post-form">
+
+        <input type="text" name="post-title" id="title-input" placeholder="Enter post title" class="form-input title-input wide-input" required>
+
+        <textarea class="form-input wide-input" id="body-input" name="post-body" cols="30" rows="6" placeholder="Your post place" required></textarea>
+
+        <select class="form-input" name="create-post-user" id="create-post-user"></select>
+
+        <button type="submit" class="search-btn create-btn">Edit post</button>
+
+
+
+      </form>
+    </div>
+  
+    <div id="new-post"></div>
+
+  </div>
+  
+
+  
+  <script type="module" src="./editPost/editPost.js"></script>
+</body>
+</html>  

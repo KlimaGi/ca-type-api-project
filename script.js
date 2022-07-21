@@ -1,5 +1,6 @@
-import { capitalize, renderSingleComment, renderAlbum } from "./functions.js";
+import { capitalize, renderAlbum } from "./functions.js";
 import { headerView } from "./headerView.js";
+import { commentsInit } from "./comments/comments.js";
 
 headerView();
 
@@ -65,9 +66,7 @@ fetch(`https://jsonplaceholder.typicode.com/posts?_start=0&_limit=15`)
           } else {
             commentsBtnEl.textContent = "Show comments";
 
-            comments.map((singleComment) => {
-              renderSingleComment(singleComment, commentsWrapper);
-            });
+            commentsInit(post.id, commentsWrapper);
           }
         });
 

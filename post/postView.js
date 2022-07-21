@@ -1,4 +1,5 @@
-import { capitalize, renderSingleComment } from "../functions.js";
+import { capitalize } from "../functions.js";
+import { commentsInit } from "../comments/comments.js";
 
 function renderPost(post) {
   let postWrapperEl = document.querySelector("#post-wrapper");
@@ -16,9 +17,8 @@ function renderPost(post) {
 
   let postBody = document.createElement("p");
   postBody.classList.add("post-body");
-  let updatedBody = capitalize(post.body);
 
-  postBody.textContent = updatedBody;
+  postBody.textContent = capitalize(post.body);
 
   let otherPosts = document.createElement("a");
   otherPosts.textContent = "Other posts";
@@ -30,29 +30,14 @@ function renderPost(post) {
 
   let updatePostDiv = document.createElement("div");
   let updatePostEl = document.createElement("a");
-  updatePostEl.textContent = " Edit post";
+  updatePostEl.textContent = "Edit post";
   updatePostEl.setAttribute("href", "./edit-post.html");
+  updatePostEl.classList.add("link-btn");
   updatePostDiv.append(updatePostEl);
 
-  let commentsWrapper = document.createElement("div");
-  commentsWrapper.classList.add("comments-wrapper");
+  commentsInit(post.id, postWrapperEl);
 
-  fetch(`https://jsonplaceholder.typicode.com/comments?postId=${post.id}`)
-    .then((res) => res.json())
-    .then((comments) => {
-      comments.map((singleComment) => {
-        renderSingleComment(singleComment, commentsWrapper);
-      });
-    });
-
-  postItemEl.append(
-    postTitle,
-    postAuthor,
-    otherPosts,
-    updatePostDiv,
-    postBody,
-    commentsWrapper
-  );
+  postItemEl.append(postTitle, postAuthor, otherPosts, postBody, updatePostDiv);
   postWrapperEl.append(postItemEl);
 }
 

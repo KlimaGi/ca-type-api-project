@@ -101,7 +101,7 @@ body {
 .link-btn {
   padding: 0.4rem 1rem;
   background-color: var(--color-semi-dark);
-  color: var(--color-light-purple);
+  color: var(--color-light-purple) !important;
   box-shadow: 0 6px 10px 2px var(--color-purple-opacity);
   text-decoration: none;
 }
