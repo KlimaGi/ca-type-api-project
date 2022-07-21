@@ -1,9 +1,3 @@
-async function getAllUsers() {
-  let res = await fetch("https://jsonplaceholder.typicode.com/users");
-  let users = await res.json();
-  return users;
-}
-
 async function createNewPost(post) {
   let res = await fetch("https://jsonplaceholder.typicode.com/posts", {
     method: "POST",
@@ -21,4 +15,4 @@ async function getUserById(id) {
   let user = await res.json();
   return user;
 }
-export { getAllUsers, createNewPost, getUserById };
+export { createNewPost, getUserById };

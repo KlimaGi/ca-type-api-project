@@ -31,7 +31,7 @@ function renderPost(post) {
   let updatePostDiv = document.createElement("div");
   let updatePostEl = document.createElement("a");
   updatePostEl.textContent = "Edit post";
-  updatePostEl.setAttribute("href", "./edit-post.html");
+  updatePostEl.setAttribute("href", `./edit-post.html?post_id=${post.id}`);
   updatePostEl.classList.add("link-btn");
   updatePostDiv.append(updatePostEl);
 

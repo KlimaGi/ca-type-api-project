@@ -1,6 +1,7 @@
 import { headerView } from "../headerView.js";
 import { renderOptionEl } from "../functions.js";
-import { getAllUsers, createNewPost } from "./createPostController.js";
+import { createNewPost } from "./createPostController.js";
+import { getAllUsers } from "../users/usersController.js";
 import { renderCreatedPost } from "./createPostView.js";
 
 async function createPostInit() {
