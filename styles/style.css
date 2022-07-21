@@ -27,7 +27,7 @@ body {
   padding: 1rem 0;
 }
 .container {
-  padding: 0 2rem;
+  padding: 0 2rem 2rem;
 }
 .ul-el {
   padding-left: 0;
@@ -62,7 +62,10 @@ body {
   font-weight: bolder;
   font-size: 1.1rem;
 }
-.post-item a,
+.on-right-side {
+  float: right;
+}
+
 .link {
   text-decoration: none;
   border-bottom: 1px solid var(--color-semi-dark);
@@ -70,12 +73,11 @@ body {
   font-size: 1rem;
 }
 
-.post-item a:hover,
 .link:hover {
   color: var(--color-dark-purple);
   border-bottom: 2px solid var(--color-dark-purple);
 }
-.post-item a:active,
+
 .link:active {
   color: var(--color-dark-purple);
   border-bottom: 1px solid var(--color-dark-purple);
@@ -202,9 +204,7 @@ select.form-input {
 }
 
 /* post */
-.other-posts {
-  float: right;
-}
+
 .post-body {
   padding: 1.3rem 0;
 }

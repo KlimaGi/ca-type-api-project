@@ -46,7 +46,7 @@ fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
 
             postItem.innerHTML = `<h4>${titleCapitalize}</h4>
                                   <p>${bodyCapitalize}</p>
-                                  <a href="./post.html?post_id=${post.id}">Read more</a>`;
+                                  <a class="link" href="./post.html?post_id=${post.id}">Read more</a>`;
 
             postWrapperEl.append(postItem);
           });
@@ -73,8 +73,7 @@ fetch(
 
     let otherAlbums = document.createElement("a");
     otherAlbums.textContent = "Other albums";
-    otherAlbums.classList.add("link");
-    otherAlbums.classList.add("other-posts");
+    otherAlbums.classList.add("link", "on-right-side");
 
     otherAlbums.setAttribute("href", `./albums.html?user_id=${userId}`);
 

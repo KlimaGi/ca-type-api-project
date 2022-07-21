@@ -13,8 +13,6 @@ function renderPost(post) {
   postTitle.textContent = updatedTitle;
   postTitle.classList.add("title");
 
-  let postAuthor = document.createElement("span");
-
   let postBody = document.createElement("p");
   postBody.classList.add("post-body");
 
@@ -22,11 +20,12 @@ function renderPost(post) {
 
   let otherPosts = document.createElement("a");
   otherPosts.textContent = "Other posts";
-  otherPosts.classList.add("other-posts");
+  otherPosts.classList.add("on-right-side", "link");
 
   otherPosts.setAttribute("href", `./posts.html?user_id=${post.userId}`);
 
-  postAuthor.innerHTML = `Author: <a href="./user.html?user_id=${post.user.id}"> ${post.user.name}</a>`;
+  let postAuthor = document.createElement("span");
+  postAuthor.innerHTML = `Author: <a class="link" href="./user.html?user_id=${post.user.id}"> ${post.user.name}</a>`;
 
   let updatePostDiv = document.createElement("div");
   let updatePostEl = document.createElement("a");

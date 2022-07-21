@@ -13,7 +13,6 @@ async function editPostInit() {
   let postId = urlParams.get("post_id");
 
   let post = await getPostByIdExpandUser(postId);
-  console.log("post", post);
   let users = await getAllUsers();
 
   let selectOptions = document.querySelector("#edit-post-user");
@@ -51,7 +50,7 @@ async function editPostInit() {
     console.log("editPostData", editPostData);
 
     let editPostResult = await editPost(editPostData);
-    console.log("editPostResult", editPostResult);
+
     renderEditedPost(editPostResult);
 
     // event.target.reset();
