@@ -114,9 +114,9 @@ _         _
 * 13.3.1. Input elementą posto pavadinimui įvesti.
 * 13.3.2. Textarea elementą posto turiniui įvesti.
 * 13.3.3. Select elementą, kuriame būtų atvaizduojami visų vartotojų vardai (option elementų value naudoti vartotojų id).
-13.3.4. Iš API gautais duomenimis (13.2.2. užduotis) užpildyti formą.
+* 13.3.4. Iš API gautais duomenimis (13.2.2. užduotis) užpildyti formą.
 
 13.4. Formos submit metu:
-13.4.1. Iš formos duomenų suformuluoti objektą pagal API reikalavimus.
-13.4.2. Su šiais duomenimis išsiųsti PUT užklausą pagal API reikalavimus.
-13.4.3. Iš užklausos atsakymo gautų duomenų suformoluoti HTML elementą ir juos išvesti į ekraną.
+* 13.4.1. Iš formos duomenų suformuluoti objektą pagal API reikalavimus.
+* 13.4.2. Su šiais duomenimis išsiųsti PUT užklausą pagal API reikalavimus.
+* 13.4.3. Iš užklausos atsakymo gautų duomenų suformoluoti HTML elementą ir juos išvesti į ekraną.

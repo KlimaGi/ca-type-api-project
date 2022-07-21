@@ -1,12 +1,12 @@
 import { getUserById } from "../user/userController.js";
 import { capitalize } from "../functions.js";
 
-async function renderCreatedPost(data) {
+async function renderEditedPost(data) {
   let { title, body, userId, id } = data;
 
   let user = await getUserById(userId);
 
-  let newPostEl = document.querySelector("#new-post");
+  let editPostEl = document.querySelector("#edit-post");
   let postTitleEl = document.createElement("h3");
   postTitleEl.classList.add("page-title");
   postTitleEl.innerHTML = `${capitalize(
@@ -19,7 +19,7 @@ async function renderCreatedPost(data) {
   let postAuthorEl = document.createElement("p");
   postAuthorEl.textContent = "Author is: " + user.name;
 
-  newPostEl.append(postTitleEl, postBodyEl, postAuthorEl);
+  editPostEl.append(postTitleEl, postBodyEl, postAuthorEl);
 }
 
-export { renderCreatedPost };
+export { renderEditedPost };
