@@ -1,4 +1,5 @@
 import { createNewComment } from "./createCommentController.js";
+import { renderSingleComment } from "../comments/commentsView.js";
 
 function createCommentInit(postWrapperEl, postId) {
   let commentFormEl = document.createElement("form");
@@ -42,9 +43,6 @@ function createCommentInit(postWrapperEl, postId) {
     let email = elements["comment-email"].value;
     let body = elements["comment-body"].value;
 
-    console.log("title", title);
-    console.log("body", body);
-
     let newComment = {
       postId,
       id: 1,
@@ -54,16 +52,9 @@ function createCommentInit(postWrapperEl, postId) {
     };
 
     let createComment = await createNewComment(newComment);
-    console.log("createComment", createComment);
+
+    renderSingleComment(createComment, ".comments-wrapper");
   });
 }
 
 export { createCommentInit };
-
-// let comment = {
-//   postId: 1,
-//   id: 1,
-//   name: "id labore ex et quam laborum",
-//   email: "Eliseo@gardner.biz",
-//   body: "laudantium enim quasi est quidem m",
-// };
