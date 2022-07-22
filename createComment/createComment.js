@@ -1,3 +1,5 @@
+import { createNewComment } from "./createCommentController.js";
+
 function createCommentInit(postWrapperEl, postId) {
   let commentFormEl = document.createElement("form");
   commentFormEl.setAttribute("id", "create-comment");
@@ -16,6 +18,7 @@ function createCommentInit(postWrapperEl, postId) {
   let commentBody = document.createElement("textarea");
   commentBody.setAttribute("name", "comment-body");
   commentBody.setAttribute("placeholder", "Your comment ...");
+  commentBody.setAttribute("rows", "3");
   commentBody.classList.add("comment-input", "wide-input");
 
   let createCommentBtnEl = document.createElement("button");
@@ -23,10 +26,15 @@ function createCommentInit(postWrapperEl, postId) {
   createCommentBtnEl.setAttribute("type", "submit");
   createCommentBtnEl.classList.add("btn");
 
-  commentFormEl.append(commentTitle, commentBody, createCommentBtnEl);
+  commentFormEl.append(
+    commentTitle,
+    commentEmail,
+    commentBody,
+    createCommentBtnEl
+  );
   postWrapperEl.append(commentFormEl);
 
-  commentFormEl.addEventListener("submit", (event) => {
+  commentFormEl.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     let { elements } = event.target;
@@ -44,15 +52,18 @@ function createCommentInit(postWrapperEl, postId) {
       email,
       body,
     };
+
+    let createComment = await createNewComment(newComment);
+    console.log("createComment", createComment);
   });
 }
 
 export { createCommentInit };
 
-let comment = {
-  postId: 1,
-  id: 1,
-  name: "id labore ex et quam laborum",
-  email: "Eliseo@gardner.biz",
-  body: "laudantium enim quasi est quidem m",
-};
+// let comment = {
+//   postId: 1,
+//   id: 1,
+//   name: "id labore ex et quam laborum",
+//   email: "Eliseo@gardner.biz",
+//   body: "laudantium enim quasi est quidem m",
+// };
