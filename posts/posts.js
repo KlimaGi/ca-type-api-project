@@ -1,4 +1,3 @@
-import { capitalize } from "../functions.js";
 import { headerView } from "../headerView.js";
 import {
   getUserByIdEmbedPosts,
