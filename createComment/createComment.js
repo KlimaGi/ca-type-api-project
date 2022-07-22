@@ -44,7 +44,7 @@ function createCommentInit(postWrapperEl, postId) {
     let body = elements["comment-body"].value;
 
     let newComment = {
-      postId,
+      postId: Number(postId),
       id: 1,
       name: title,
       email,

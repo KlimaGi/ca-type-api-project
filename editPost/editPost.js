@@ -42,10 +42,10 @@ async function editPostInit() {
     let userIdValue = elements["edit-post-user"].value;
 
     let editPostData = {
-      id: postId,
+      id: Number(postId),
       title: titleInput,
       body: bodyInput,
-      userId: userIdValue,
+      userId: Number(userIdValue),
     };
     console.log("editPostData", editPostData);
 
