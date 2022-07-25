@@ -12,7 +12,6 @@ function renderAllComments(comments, postWrapperEl) {
 }
 
 function renderSingleComment(comment, commentsSelector) {
-  console.log("comment", comment);
   let { name, email, body, id, postId } = comment;
 
   let commentsWrapper = document.querySelector(commentsSelector);
@@ -27,28 +26,82 @@ function renderSingleComment(comment, commentsSelector) {
   let commentEmail = document.createElement("span");
   commentEmail.textContent = `Comment by: ${email}`;
 
+  let commentBody = document.createElement("p");
+  commentBody.textContent = capitalize(body);
+
   let commentEditBtn = document.createElement("button");
   commentEditBtn.textContent = "Edit";
   commentEditBtn.classList.add("search-btn");
-  commentEditBtn.addEventListener("click", async () => {
-    let editCommentData = {
-      postId: postId,
-      id: id,
-      name: "id labore ex et quam laborum",
-      email: "Eliseo@gardner.biz",
-      body: "laudantium enim quasi",
-    };
 
-    let editedComment = await editComment(editCommentData);
-    console.log("editedComment", editedComment);
+  commentEditBtn.addEventListener("click", () => {
+    let commentFormEl = document.createElement("form");
+    commentFormEl.setAttribute("id", "edit-comment");
+    commentFormEl.classList.add("create-comment");
+
+    let commentTitleForm = document.createElement("input");
+    commentTitleForm.setAttribute("name", "comment-title");
+    commentTitleForm.setAttribute("placeholder", "Your comment name");
+    commentTitleForm.classList.add("comment-input", "wide-input");
+    commentTitleForm.value = name;
+
+    let commentEmailForm = document.createElement("input");
+    commentEmailForm.setAttribute("name", "comment-email");
+    commentEmailForm.setAttribute("placeholder", "Your email");
+    commentEmailForm.classList.add("comment-input", "wide-input");
+    commentEmailForm.value = email;
+
+    let commentBodyForm = document.createElement("textarea");
+    commentBodyForm.setAttribute("name", "comment-body");
+    commentBodyForm.setAttribute("placeholder", "Your comment ...");
+    commentBodyForm.setAttribute("rows", "6");
+    commentBodyForm.classList.add("comment-input", "wide-input");
+    commentBodyForm.value = body;
+
+    let submitEditCommentBtnEl = document.createElement("button");
+    submitEditCommentBtnEl.textContent = "Submit edited comment";
+    submitEditCommentBtnEl.setAttribute("type", "submit");
+    submitEditCommentBtnEl.classList.add("btn");
+
+    commentFormEl.append(
+      commentTitleForm,
+      commentEmailForm,
+      commentBodyForm,
+      submitEditCommentBtnEl
+    );
+    commentItem.append(commentFormEl);
+
+    commentFormEl.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      let { elements } = event.target;
+      let titleEdited = elements["comment-title"].value;
+      let emailEdited = elements["comment-email"].value;
+      let bodyEdited = elements["comment-body"].value;
+
+      let editedCommentData = {
+        postId: Number(postId),
+        id,
+        name: titleEdited,
+        email: emailEdited,
+        body: bodyEdited,
+      };
+
+      console.log("editedCommentData", editedCommentData);
+
+      let editedCommentRes = await editComment(editedCommentData);
+      console.log("editedCommentRes", editedCommentRes);
+
+      let { name: resName, email: resEmail, body: resBody } = editedCommentRes;
+      commentTitle.textContent = capitalize(resName);
+      commentEmail.textContent = `Comment by: ${resEmail}`;
+      commentBody.textContent = capitalize(resBody);
+
+      commentFormEl.remove();
+    });
   });
 
   // commentEditBtn.addEventListener("click", () => {
   //   editComment(data, ".comment-form-wrapper");
   // });
-
-  let commentBody = document.createElement("p");
-  commentBody.textContent = capitalize(body);
 
   commentItem.append(commentTitle, commentEmail, commentBody, commentEditBtn);
   commentsWrapper.append(commentItem);
