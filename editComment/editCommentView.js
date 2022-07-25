@@ -43,9 +43,10 @@ function editCommentFormView(editCommentData, commentSelectors) {
     commentBodyForm,
     submitEditCommentBtnEl
   );
-  let commentItem = document.querySelector(parentSelector);
 
-  commentItem.append(commentFormEl);
+  let commentItem = document.querySelector(parentSelector);
+  //console.dir(commentItem.children.length);
+  if (commentItem.children.length < 5) commentItem.append(commentFormEl);
 
   commentFormEl.addEventListener("submit", async (event) => {
     event.preventDefault();
