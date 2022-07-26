@@ -1,5 +1,5 @@
 import { capitalize } from "../functions.js";
-import { editComment } from "../editComment/editCommentController.js";
+
 import { editCommentFormView } from "../editComment/editCommentView.js";
 
 function renderAllComments(comments, postWrapperEl) {
@@ -19,6 +19,7 @@ function renderSingleComment(comment, commentsSelector) {
 
   let commentItem = document.createElement("div");
   commentItem.classList.add("comment-item");
+  commentItem.setAttribute("id", `comment-item-${id}`);
 
   let commentTitle = document.createElement("h5");
   commentTitle.textContent = capitalize(name);
@@ -36,6 +37,8 @@ function renderSingleComment(comment, commentsSelector) {
   let commentEditBtn = document.createElement("button");
   commentEditBtn.textContent = "Edit comment";
   commentEditBtn.classList.add("search-btn");
+  commentEditBtn.setAttribute("id", `#edit-comment-btn-${id}`);
+  // let editBtnEl = document.querySelector(`#edit-comment-btn-${id}`);
 
   commentEditBtn.addEventListener("click", () => {
     let editCommentData = { name, email, body, postId: Number(postId), id };
@@ -43,9 +46,10 @@ function renderSingleComment(comment, commentsSelector) {
       titleId: `#title-${id}`,
       emailId: `#email-${id}`,
       bodyId: `#body-${id}`,
-      parentSelector: ".comment-item",
+      parentSelector: `#comment-item-${id}`,
+      editBtnId: `#edit-comment-btn-${id}`,
     };
-
+    // editBtnEl.setAttribute("disabled", "");
     editCommentFormView(editCommentData, commentSelectors);
   });
 

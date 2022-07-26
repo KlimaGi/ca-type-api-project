@@ -3,14 +3,17 @@ import { editComment } from "./editCommentController.js";
 
 function editCommentFormView(editCommentData, commentSelectors) {
   let { name, email, body, postId, id } = editCommentData;
-  let { titleId, emailId, bodyId, parentSelector } = commentSelectors;
+  let { titleId, emailId, bodyId, parentSelector, editBtnId } =
+    commentSelectors;
 
   let newCommentTitleEl = document.querySelector(titleId);
   let newCommentEmailEl = document.querySelector(emailId);
   let newCommentBodyEl = document.querySelector(bodyId);
 
+  let commentEditBtnEl = document.querySelector(editBtnId);
+
   let commentFormEl = document.createElement("form");
-  commentFormEl.setAttribute("id", "edit-comment");
+  commentFormEl.setAttribute("id", `edit-comment`);
   commentFormEl.classList.add("create-comment");
 
   let commentTitleForm = document.createElement("input");
@@ -45,8 +48,10 @@ function editCommentFormView(editCommentData, commentSelectors) {
   );
 
   let commentItem = document.querySelector(parentSelector);
-  //console.dir(commentItem.children.length);
-  if (commentItem.children.length < 5) commentItem.append(commentFormEl);
+
+  if (!commentItem.querySelector("form")) {
+    commentItem.append(commentFormEl);
+  }
 
   commentFormEl.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -71,6 +76,7 @@ function editCommentFormView(editCommentData, commentSelectors) {
     newCommentBodyEl.textContent = capitalize(resBody);
 
     commentFormEl.remove();
+    // commentEditBtnEl.removeAttribute("disabled");
   });
 }
 

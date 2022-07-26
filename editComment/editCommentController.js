@@ -2,7 +2,7 @@ async function editComment(comment) {
   let { id } = comment;
 
   let res = await fetch(`https://jsonplaceholder.typicode.com/comments/${id}`, {
-    method: "PATCH",
+    method: "PUT",
     body: JSON.stringify(comment),
     headers: {
       "Content-type": "application/json; charset=UTF-8",
