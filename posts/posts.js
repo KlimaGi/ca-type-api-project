@@ -11,13 +11,15 @@ async function postsInit() {
   let queryParams = document.location.search;
   let urlParams = new URLSearchParams(queryParams);
   let userId = urlParams.get("user_id");
+  let limit = urlParams.get("limit") ? urlParams.get("limit") : 18;
+  let page = urlParams.get("page") ? urlParams.get("page") : 1;
 
   if (userId) {
     let user = await getUserByIdEmbedPosts(userId);
     renderPostsByUserId(user);
   } else {
-    let posts = await getAllPostsExpandUser();
-    renderAllPostsList(posts);
+    let posts = await getAllPostsExpandUser(page, limit);
+    renderAllPostsList(posts, limit);
   }
 }
 postsInit();

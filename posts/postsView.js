@@ -32,7 +32,7 @@ function renderPostsByUserId(user) {
   });
 }
 
-function renderAllPostsList(posts) {
+function renderAllPostsList(posts, limit) {
   let postsWrapperEl = document.querySelector("#posts-wrapper");
   let titleAndBtnWrapperEl = document.createElement("div");
   titleAndBtnWrapperEl.classList.add("title-btn-wrapper");
@@ -61,6 +61,28 @@ function renderAllPostsList(posts) {
 
     postsList.prepend(postItem);
   });
+
+  let parentSelector = "#posts-wrapper";
+  renderPaginationLinks(parentSelector, limit);
+}
+
+function renderPaginationLinks(parentSelector, pageLimit) {
+  let total = 100;
+  let limit = pageLimit;
+  let pages = Math.ceil(total / limit);
+
+  let postsWrapperEl = document.querySelector(parentSelector);
+  let paginationEl = document.createElement("div");
+
+  for (let i = 1; i <= pages; i++) {
+    console.log("i", i);
+    let pageNumEl = document.createElement("a");
+    pageNumEl.href = `./posts.html?page=${i}&limit=${limit}`;
+    pageNumEl.textContent = i;
+    paginationEl.append(pageNumEl);
+  }
+
+  postsWrapperEl.append(paginationEl);
 }
 
 export { renderPostsByUserId, renderAllPostsList };
