@@ -1,15 +1,13 @@
 import { capitalize } from "../functions.js";
 
-function renderPostsByUserId(user) {
-  let { posts, name } = user;
-
+function renderPostsByUserId(posts) {
   let postsWrapperEl = document.querySelector("#posts-wrapper");
   let titleAndBtnWrapperEl = document.createElement("div");
   titleAndBtnWrapperEl.classList.add("title-btn-wrapper");
 
   let postsListTitle = document.createElement("h2");
   postsListTitle.classList.add("page-title");
-  postsListTitle.textContent = `Posts of ${name}:`;
+  postsListTitle.textContent = `Posts of ${posts[0].user.name}:`;
 
   let createPostBtnEl = document.createElement("a");
   createPostBtnEl.textContent = "Create Post";
@@ -75,7 +73,6 @@ function renderPaginationLinks(parentSelector, pageLimit) {
   let paginationEl = document.createElement("div");
 
   for (let i = 1; i <= pages; i++) {
-    console.log("i", i);
     let pageNumEl = document.createElement("a");
     pageNumEl.href = `./posts.html?page=${i}&limit=${limit}`;
     pageNumEl.textContent = i;

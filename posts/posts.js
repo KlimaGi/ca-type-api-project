@@ -15,8 +15,8 @@ async function postsInit() {
   let page = urlParams.get("page") ? urlParams.get("page") : 1;
 
   if (userId) {
-    let user = await getUserByIdEmbedPosts(userId);
-    renderPostsByUserId(user);
+    let posts = await getUserByIdEmbedPosts(userId);
+    renderPostsByUserId(posts);
   } else {
     let posts = await getAllPostsExpandUser(page, limit);
     renderAllPostsList(posts, limit);
