@@ -30,7 +30,7 @@ function renderPostsByUserId(posts) {
   });
 }
 
-function renderAllPostsList(posts, limit) {
+async function renderAllPostsList(posts, page, limit) {
   let postsWrapperEl = document.querySelector("#posts-wrapper");
   let titleAndBtnWrapperEl = document.createElement("div");
   titleAndBtnWrapperEl.classList.add("title-btn-wrapper");
@@ -61,25 +61,72 @@ function renderAllPostsList(posts, limit) {
   });
 
   let parentSelector = "#posts-wrapper";
-  renderPaginationLinks(parentSelector, limit);
+
+  renderPaginationLinks(parentSelector, page, limit);
 }
 
-function renderPaginationLinks(parentSelector, pageLimit) {
+function renderPaginationLinks(parentSelector, page, pageLimit) {
   let total = 100;
+  let currentPage = Number(page);
   let limit = pageLimit;
   let pages = Math.ceil(total / limit);
+  console.log("pages", pages);
+
+  if (pages === 1) return;
 
   let postsWrapperEl = document.querySelector(parentSelector);
-  let paginationEl = document.createElement("div");
+  let paginationWrapperEl = document.createElement("div");
+  paginationWrapperEl.classList.add("pagination-wrapper");
 
-  for (let i = 1; i <= pages; i++) {
-    let pageNumEl = document.createElement("a");
-    pageNumEl.href = `./posts.html?page=${i}&limit=${limit}`;
-    pageNumEl.textContent = i;
-    paginationEl.append(pageNumEl);
+  if (currentPage !== 1) {
+    let firstPaginationPageItem = document.createElement("a");
+    firstPaginationPageItem.href = `./posts.html?page=1&limit=${limit}`;
+    firstPaginationPageItem.textContent = "First";
+    firstPaginationPageItem.classList.add("pagination-arrow");
+
+    let prevPaginationEl = document.createElement("a");
+    prevPaginationEl.href = `./posts.html?page=${
+      currentPage - 1
+    }&limit=${limit}`;
+    prevPaginationEl.textContent = "<";
+    prevPaginationEl.classList.add("pagination-arrow");
+
+    paginationWrapperEl.append(firstPaginationPageItem, prevPaginationEl);
   }
 
-  postsWrapperEl.append(paginationEl);
+  for (let i = 1; i <= pages; i++) {
+    let paginationItem;
+
+    if (i === currentPage) {
+      paginationItem = document.createElement("span");
+      paginationItem.classList.add("current-page");
+    } else {
+      paginationItem = document.createElement("a");
+      paginationItem.href = `./posts.html?page=${i}&limit=${limit}`;
+    }
+
+    paginationItem.textContent = i;
+    paginationItem.classList.add("pagination-item");
+    paginationWrapperEl.append(paginationItem);
+  }
+
+  if (currentPage !== pages) {
+    let lastPaginationPageItem = document.createElement("a");
+    lastPaginationPageItem.href = `./posts.html?page=${pages}&limit=${limit}`;
+    lastPaginationPageItem.textContent = "Last";
+    lastPaginationPageItem.classList.add("pagination-arrow");
+
+    let nextPaginationEl = document.createElement("a");
+    nextPaginationEl.href = `./posts.html?page=${
+      currentPage + 1
+    }&limit=${limit}`;
+    nextPaginationEl.textContent = ">";
+    nextPaginationEl.classList.add("pagination-arrow");
+
+    paginationWrapperEl.append(nextPaginationEl, lastPaginationPageItem);
+  }
+
+  postsWrapperEl.append(paginationWrapperEl);
 }
 
 export { renderPostsByUserId, renderAllPostsList };

@@ -19,7 +19,7 @@ async function postsInit() {
     renderPostsByUserId(posts);
   } else {
     let posts = await getAllPostsExpandUser(page, limit);
-    renderAllPostsList(posts, limit);
+    renderAllPostsList(posts, page, limit);
   }
 }
 postsInit();

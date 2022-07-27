@@ -1,3 +1,9 @@
+async function getAllPosts() {
+  let res = await fetch(`https://jsonplaceholder.typicode.com/posts`);
+  let posts = await res.json();
+  return posts;
+}
+
 async function getPostsWithLimit(limit) {
   let res = await fetch(
     `https://jsonplaceholder.typicode.com/posts?_start=0&_limit=${limit}`
@@ -24,4 +30,9 @@ async function getAllPostsExpandUser(page, limit) {
   let posts = res.json();
   return posts;
 }
-export { getPostsWithLimit, getUserByIdEmbedPosts, getAllPostsExpandUser };
+export {
+  getAllPosts,
+  getPostsWithLimit,
+  getUserByIdEmbedPosts,
+  getAllPostsExpandUser,
+};

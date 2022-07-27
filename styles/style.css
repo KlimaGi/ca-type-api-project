@@ -284,3 +284,29 @@ select.form-input {
 .span-text {
   font-size: 0.9rem;
 }
+
+.pagination-wrapper {
+  margin: 1rem auto;
+  width: 100%;
+  text-align: center;
+}
+.pagination-item {
+  padding: 2px 8px;
+  text-decoration: none;
+  color: var(--color-semi-dark);
+  font-size: 1rem;
+}
+.current-page {
+  color: var(--color-dark-purple);
+  background-color: var(--color-light-blue);
+  padding: 2px 8px;
+}
+.pagination-arrow {
+  color: var(--color-semi-dark);
+  padding: 0 8px;
+  text-decoration: none;
+  font-weight: bolder;
+}
+.pagination-arrow:hover {
+  background-color: var(--color-light-blue);
+}
