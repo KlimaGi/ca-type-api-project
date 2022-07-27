@@ -75,8 +75,10 @@ function renderPaginationLinks(parentSelector, page, limit, segment) {
   let pagesInSegment = 7;
   let segmentsCount = Math.ceil(pages / pagesInSegment);
   let currentSegment = Number(segment);
+  console.log("currentSegment", currentSegment);
   let firstPageInSegment = (currentSegment - 1) * pagesInSegment + 1;
   let segmentFromPage = Math.ceil(currentPage / pagesInSegment);
+  console.log("segmentFromPage", segmentFromPage);
   let lastPageInSegment;
   if (currentSegment < segmentsCount) {
     lastPageInSegment = pagesInSegment * currentSegment;
@@ -90,16 +92,18 @@ function renderPaginationLinks(parentSelector, page, limit, segment) {
   let paginationWrapperEl = document.createElement("div");
   paginationWrapperEl.classList.add("pagination-wrapper");
 
+  if (currentSegment === 1) {
+  }
   if (currentPage !== 1) {
     let firstPaginationPageItem = document.createElement("a");
-    firstPaginationPageItem.href = `./posts.html?page=1&limit=${limit}`;
+    firstPaginationPageItem.href = `./posts.html?page=1&limit=${limit}&segment=${segmentFromPage}`;
     firstPaginationPageItem.textContent = "First";
     firstPaginationPageItem.classList.add("pagination-arrow");
 
     let prevPaginationEl = document.createElement("a");
     prevPaginationEl.href = `./posts.html?page=${
       currentPage - 1
-    }&limit=${limit}`;
+    }&limit=${limit}&segment=${segmentFromPage}`;
     prevPaginationEl.textContent = "<";
     prevPaginationEl.classList.add("pagination-arrow");
 
@@ -114,7 +118,7 @@ function renderPaginationLinks(parentSelector, page, limit, segment) {
       paginationItem.classList.add("current-page");
     } else {
       paginationItem = document.createElement("a");
-      paginationItem.href = `./posts.html?page=${i}&limit=${limit}&segment=${segmentFromPage}`;
+      paginationItem.href = `./posts.html?page=${i}&limit=${limit}&segment=${currentSegment}`;
     }
 
     paginationItem.textContent = i;

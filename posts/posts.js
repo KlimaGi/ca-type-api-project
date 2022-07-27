@@ -11,7 +11,7 @@ async function postsInit() {
   let queryParams = document.location.search;
   let urlParams = new URLSearchParams(queryParams);
   let userId = urlParams.get("user_id");
-  let limit = urlParams.get("limit") ? urlParams.get("limit") : 18;
+  let limit = urlParams.get("limit") ? urlParams.get("limit") : 8;
   let page = urlParams.get("page") ? urlParams.get("page") : 1;
   let segment = urlParams.get("segment") ? urlParams.get("segment") : 1;
 
