@@ -1,6 +1,7 @@
 import { capitalize, renderAlbum } from "./functions.js";
 import { headerView } from "./headerView.js";
 import { commentsInit } from "./comments/comments.js";
+import { getAllAlbums } from "./albums/albumsController.js";
 
 headerView();
 
@@ -81,19 +82,16 @@ fetch(`https://jsonplaceholder.typicode.com/posts?_start=0&_limit=15`)
     });
   });
 
-fetch(
-  `https://jsonplaceholder.typicode.com/albums?_expand=user&_embed=photos&_limit=15`
-)
-  .then((res) => res.json())
-  .then((albums) => {
-    albums.map((album) => {
-      let albumData = {
-        album,
-        title: "All albums:",
-        userHref: "",
-        userFullName: album.user.name,
-      };
-
-      renderAlbum(albumData);
-    });
+async function renderAllAlbums() {
+  let albums = await getAllAlbums();
+  albums.map((album) => {
+    let albumData = {
+      album,
+      title: "All albums:",
+      userHref: "",
+      userFullName: album.user.name,
+    };
+    renderAlbum(albumData);
   });
+}
+renderAllAlbums();
