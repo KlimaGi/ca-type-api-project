@@ -300,6 +300,7 @@ select.form-input {
   color: var(--color-dark-purple);
   background-color: var(--color-light-blue);
   padding: 2px 8px;
+  cursor: pointer;
 }
 .pagination-arrow {
   color: var(--color-semi-dark);
@@ -307,6 +308,7 @@ select.form-input {
   text-decoration: none;
   font-weight: bolder;
 }
+.pagination-item:hover,
 .pagination-arrow:hover {
   background-color: var(--color-light-blue);
 }

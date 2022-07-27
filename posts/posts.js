@@ -13,13 +13,14 @@ async function postsInit() {
   let userId = urlParams.get("user_id");
   let limit = urlParams.get("limit") ? urlParams.get("limit") : 18;
   let page = urlParams.get("page") ? urlParams.get("page") : 1;
+  let segment = urlParams.get("segment") ? urlParams.get("segment") : 1;
 
   if (userId) {
     let posts = await getUserByIdEmbedPosts(userId);
     renderPostsByUserId(posts);
   } else {
-    let posts = await getAllPostsExpandUser(page, limit);
-    renderAllPostsList(posts, page, limit);
+    let posts = await getAllPostsExpandUser(page, limit, segment);
+    renderAllPostsList(posts, page, limit, segment);
   }
 }
 postsInit();

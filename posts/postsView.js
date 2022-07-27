@@ -30,7 +30,7 @@ function renderPostsByUserId(posts) {
   });
 }
 
-async function renderAllPostsList(posts, page, limit) {
+async function renderAllPostsList(posts, page, limit, segment) {
   let postsWrapperEl = document.querySelector("#posts-wrapper");
   let titleAndBtnWrapperEl = document.createElement("div");
   titleAndBtnWrapperEl.classList.add("title-btn-wrapper");
@@ -62,17 +62,29 @@ async function renderAllPostsList(posts, page, limit) {
 
   let parentSelector = "#posts-wrapper";
 
-  renderPaginationLinks(parentSelector, page, limit);
+  renderPaginationLinks(parentSelector, page, limit, segment);
 }
 
-function renderPaginationLinks(parentSelector, page, pageLimit) {
+function renderPaginationLinks(parentSelector, page, limit, segment) {
+  //pages
   let total = 100;
   let currentPage = Number(page);
-  let limit = pageLimit;
   let pages = Math.ceil(total / limit);
-  console.log("pages", pages);
 
-  if (pages === 1) return;
+  //segments
+  let pagesInSegment = 7;
+  let segmentsCount = Math.ceil(pages / pagesInSegment);
+  let currentSegment = Number(segment);
+  let firstPageInSegment = (currentSegment - 1) * pagesInSegment + 1;
+  let segmentFromPage = Math.ceil(currentPage / pagesInSegment);
+  let lastPageInSegment;
+  if (currentSegment < segmentsCount) {
+    lastPageInSegment = pagesInSegment * currentSegment;
+  } else {
+    lastPageInSegment = pages;
+  }
+
+  if (total <= limit) return;
 
   let postsWrapperEl = document.querySelector(parentSelector);
   let paginationWrapperEl = document.createElement("div");
@@ -94,7 +106,7 @@ function renderPaginationLinks(parentSelector, page, pageLimit) {
     paginationWrapperEl.append(firstPaginationPageItem, prevPaginationEl);
   }
 
-  for (let i = 1; i <= pages; i++) {
+  for (let i = firstPageInSegment; i <= lastPageInSegment; i++) {
     let paginationItem;
 
     if (i === currentPage) {
@@ -102,7 +114,7 @@ function renderPaginationLinks(parentSelector, page, pageLimit) {
       paginationItem.classList.add("current-page");
     } else {
       paginationItem = document.createElement("a");
-      paginationItem.href = `./posts.html?page=${i}&limit=${limit}`;
+      paginationItem.href = `./posts.html?page=${i}&limit=${limit}&segment=${segmentFromPage}`;
     }
 
     paginationItem.textContent = i;
@@ -112,18 +124,32 @@ function renderPaginationLinks(parentSelector, page, pageLimit) {
 
   if (currentPage !== pages) {
     let lastPaginationPageItem = document.createElement("a");
-    lastPaginationPageItem.href = `./posts.html?page=${pages}&limit=${limit}`;
+    lastPaginationPageItem.href = `./posts.html?page=${pages}&limit=${limit}&segment=${currentSegment}`;
     lastPaginationPageItem.textContent = "Last";
     lastPaginationPageItem.classList.add("pagination-arrow");
 
     let nextPaginationEl = document.createElement("a");
+    let segmentFromPage = Math.ceil((currentPage + 1) / pagesInSegment);
     nextPaginationEl.href = `./posts.html?page=${
       currentPage + 1
-    }&limit=${limit}`;
+    }&limit=${limit}&segment=${segmentFromPage}`;
     nextPaginationEl.textContent = ">";
     nextPaginationEl.classList.add("pagination-arrow");
 
-    paginationWrapperEl.append(nextPaginationEl, lastPaginationPageItem);
+    let nextSegmentEl = document.createElement("a");
+    if (currentSegment !== segmentsCount) {
+      nextSegmentEl.href = `./posts.html?page=${
+        firstPageInSegment + pagesInSegment
+      }&limit=${limit}&segment=${currentSegment + 1}`;
+      nextSegmentEl.textContent = ">>";
+      nextSegmentEl.classList.add("pagination-arrow");
+    }
+
+    paginationWrapperEl.append(
+      nextPaginationEl,
+      nextSegmentEl,
+      lastPaginationPageItem
+    );
   }
 
   postsWrapperEl.append(paginationWrapperEl);

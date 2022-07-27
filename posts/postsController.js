@@ -23,11 +23,16 @@ async function getUserByIdEmbedPosts(id) {
   return userPosts;
 }
 
-async function getAllPostsExpandUser(page, limit) {
+async function getAllPostsExpandUser(page, limit, segment) {
   let res = await fetch(
     `https://jsonplaceholder.typicode.com/posts?_expand=user&_page=${page}&_limit=${limit}`
   );
-  let posts = res.json();
+
+  let xTotalCount = [...res.headers];
+  console.log("some", xTotalCount);
+  let total = xTotalCount[5][1];
+  console.log("total", total);
+  let posts = await res.json();
   return posts;
 }
 export {
