@@ -19,8 +19,8 @@ async function postsInit() {
     let posts = await getUserByIdEmbedPosts(userId);
     renderPostsByUserId(posts);
   } else {
-    let posts = await getAllPostsExpandUser(page, limit, segment);
-    renderAllPostsList(posts, page, limit, segment);
+    let { posts, total } = await getAllPostsExpandUser(page, limit);
+    renderAllPostsList(posts, page, limit, segment, total);
   }
 }
 postsInit();

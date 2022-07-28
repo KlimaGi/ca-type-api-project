@@ -1,4 +1,5 @@
 import { capitalize } from "../functions.js";
+import { renderPaginationLinks } from "../pagination.js";
 
 function renderPostsByUserId(posts) {
   let postsWrapperEl = document.querySelector("#posts-wrapper");
@@ -30,7 +31,7 @@ function renderPostsByUserId(posts) {
   });
 }
 
-async function renderAllPostsList(posts, page, limit, segment) {
+async function renderAllPostsList(posts, page, limit, segment, total) {
   let postsWrapperEl = document.querySelector("#posts-wrapper");
   let titleAndBtnWrapperEl = document.createElement("div");
   titleAndBtnWrapperEl.classList.add("title-btn-wrapper");
@@ -62,101 +63,7 @@ async function renderAllPostsList(posts, page, limit, segment) {
 
   let parentSelector = "#posts-wrapper";
 
-  renderPaginationLinks(parentSelector, page, limit, segment);
-}
-
-function renderPaginationLinks(parentSelector, page, limit, segment) {
-  //pages
-  let total = 100;
-  let currentPage = Number(page);
-  let pages = Math.ceil(total / limit);
-
-  //segments
-  let pagesInSegment = 7;
-  let segmentsCount = Math.ceil(pages / pagesInSegment);
-  let currentSegment = Number(segment);
-  console.log("currentSegment", currentSegment);
-  let firstPageInSegment = (currentSegment - 1) * pagesInSegment + 1;
-  let segmentFromPage = Math.ceil(currentPage / pagesInSegment);
-  console.log("segmentFromPage", segmentFromPage);
-  let lastPageInSegment;
-  if (currentSegment < segmentsCount) {
-    lastPageInSegment = pagesInSegment * currentSegment;
-  } else {
-    lastPageInSegment = pages;
-  }
-
-  if (total <= limit) return;
-
-  let postsWrapperEl = document.querySelector(parentSelector);
-  let paginationWrapperEl = document.createElement("div");
-  paginationWrapperEl.classList.add("pagination-wrapper");
-
-  if (currentSegment === 1) {
-  }
-  if (currentPage !== 1) {
-    let firstPaginationPageItem = document.createElement("a");
-    firstPaginationPageItem.href = `./posts.html?page=1&limit=${limit}&segment=${segmentFromPage}`;
-    firstPaginationPageItem.textContent = "First";
-    firstPaginationPageItem.classList.add("pagination-arrow");
-
-    let prevPaginationEl = document.createElement("a");
-    prevPaginationEl.href = `./posts.html?page=${
-      currentPage - 1
-    }&limit=${limit}&segment=${segmentFromPage}`;
-    prevPaginationEl.textContent = "<";
-    prevPaginationEl.classList.add("pagination-arrow");
-
-    paginationWrapperEl.append(firstPaginationPageItem, prevPaginationEl);
-  }
-
-  for (let i = firstPageInSegment; i <= lastPageInSegment; i++) {
-    let paginationItem;
-
-    if (i === currentPage) {
-      paginationItem = document.createElement("span");
-      paginationItem.classList.add("current-page");
-    } else {
-      paginationItem = document.createElement("a");
-      paginationItem.href = `./posts.html?page=${i}&limit=${limit}&segment=${currentSegment}`;
-    }
-
-    paginationItem.textContent = i;
-    paginationItem.classList.add("pagination-item");
-    paginationWrapperEl.append(paginationItem);
-  }
-
-  if (currentPage !== pages) {
-    let lastPaginationPageItem = document.createElement("a");
-    lastPaginationPageItem.href = `./posts.html?page=${pages}&limit=${limit}&segment=${currentSegment}`;
-    lastPaginationPageItem.textContent = "Last";
-    lastPaginationPageItem.classList.add("pagination-arrow");
-
-    let nextPaginationEl = document.createElement("a");
-    let segmentFromPage = Math.ceil((currentPage + 1) / pagesInSegment);
-    nextPaginationEl.href = `./posts.html?page=${
-      currentPage + 1
-    }&limit=${limit}&segment=${segmentFromPage}`;
-    nextPaginationEl.textContent = ">";
-    nextPaginationEl.classList.add("pagination-arrow");
-
-    let nextSegmentEl = document.createElement("a");
-    if (currentSegment !== segmentsCount) {
-      nextSegmentEl.href = `./posts.html?page=${
-        firstPageInSegment + pagesInSegment
-      }&limit=${limit}&segment=${currentSegment + 1}`;
-      nextSegmentEl.textContent = ">>";
-      nextSegmentEl.classList.add("pagination-arrow");
-    }
-
-    paginationWrapperEl.append(
-      nextPaginationEl,
-      nextSegmentEl,
-      lastPaginationPageItem
-    );
-  }
-
-  postsWrapperEl.append(paginationWrapperEl);
+  renderPaginationLinks(parentSelector, page, limit, segment, total);
 }
 
 export { renderPostsByUserId, renderAllPostsList };
