@@ -7,13 +7,10 @@ function renderPaginationLinks(parentSelector, page, limit, segment, total) {
   let pages = Math.ceil(total / limit);
 
   //segments
-  let pagesInSegment = 7;
+  let pagesInSegment = 5;
   let segmentsCount = Math.ceil(pages / pagesInSegment);
   let currentSegment = Number(segment);
-  console.log("currentSegment", currentSegment);
   let firstPageInSegment = (currentSegment - 1) * pagesInSegment + 1;
-  let segmentFromPage = Math.ceil(currentPage / pagesInSegment);
-  console.log("segmentFromPage", segmentFromPage);
   let lastPageInSegment;
   if (currentSegment < segmentsCount) {
     lastPageInSegment = pagesInSegment * currentSegment;
@@ -27,8 +24,6 @@ function renderPaginationLinks(parentSelector, page, limit, segment, total) {
   let paginationWrapperEl = document.createElement("div");
   paginationWrapperEl.classList.add("pagination-wrapper");
 
-  if (currentSegment === 1) {
-  }
   if (currentPage !== 1) {
     let firstPaginationPageItem = document.createElement("a");
     firstPaginationPageItem.href = `.${pathName}?page=1&limit=${limit}&segment=1`;
@@ -77,7 +72,7 @@ function renderPaginationLinks(parentSelector, page, limit, segment, total) {
 
   if (currentPage !== pages) {
     let lastPaginationPageItem = document.createElement("a");
-    lastPaginationPageItem.href = `.${pathName}?page=${pages}&limit=${limit}&segment=${currentSegment}`;
+    lastPaginationPageItem.href = `.${pathName}?page=${pages}&limit=${limit}&segment=${segmentsCount}`;
     lastPaginationPageItem.textContent = "Last";
     lastPaginationPageItem.classList.add("pagination-arrow");
 
